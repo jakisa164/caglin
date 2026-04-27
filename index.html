@@ -1,54 +1,131 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Dobro došli u Čaglin</title>
+<meta charset="UTF-8">
+<title>Čaglin</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    transition: 0.3s;
+}
+
+/* LIGHT MODE */
+.light {
+    background-color:#e6f2ff;
+    color:black;
+}
+
+/* DARK MODE */
+.dark {
+    background-color:#111;
+    color:white;
+}
+
+/* MENU */
+.menu {
+    background:#003366;
+    color:white;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+}
+
+.menu a {
+    color:white;
+    margin:0 10px;
+    text-decoration:none;
+}
+
+/* ANIMACIJA */
+.fade {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+button {
+    padding:8px 12px;
+    cursor:pointer;
+    border:none;
+    border-radius:5px;
+}
+</style>
+
 </head>
 
-<body style="margin:0; font-family: Arial; background-color:#e6f2ff;">
+<body class="light">
 
-    <!-- GORNJI BAR -->
-    <div style="background-color:#003366; color:white; padding:20px; position:relative;">
-        
-        <h1 style="margin:0;">🌍 Dobro došli u Čaglin World</h1>
-        
-        <div style="position:absolute; top:10px; right:20px; font-size:12px; text-align:right;">
-            U projektu sudjelovali:<br>
-            Jakov Adamek<br>
-            Jakov Budić<br>
-            Mario Vidmar<br>
-            Stjepan Bertosi<br><br>
+<!-- MENI -->
+<div class="menu">
+    <div>🌍 Čaglin</div>
 
-            Stranicu izradio:<br>
-            Jakov Adamek<br><br>
-
-            😄 Zadao učitelj
-        </div>
+    <div>
+        <a href="#home">Početna</a>
+        <a href="#about">O Čaglinu</a>
+        <a href="#gallery">Slike</a>
     </div>
 
-    <!-- SADRŽAJ -->
-    <div style="text-align:center; padding:30px;">
+    <button onclick="toggleMode()">🌙 / ☀️</button>
+</div>
 
-        <h2>📍 Zanimljivosti o Čaglinu</h2>
+<!-- HEADER -->
+<div style="background:#003366; color:white; padding:30px; text-align:center;">
+    <h1 class="fade">Dobro došli u Čaglin World 🌍</h1>
+</div>
 
-        <p style="font-size:18px; max-width:700px; margin:auto;">
-            Čaglin je malo mjesto u Hrvatskoj poznato po prirodi, miru i dobrim ljudima.
-            Nalazi se u Slavoniji i okružen je šumama i brdima. 
-            Iako je mali, ima svoju povijest i zanimljivu kulturu.
-        </p>
+<!-- SADRŽAJ -->
+<div style="padding:30px; text-align:center;" id="home">
 
-        <h2 style="margin-top:40px;">📸 Slike</h2>
+    <h2 class="fade">📍 O Čaglinu</h2>
 
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Slavonia_landscape.jpg" width="300" style="margin:10px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Forest_in_Croatia.jpg" width="300" style="margin:10px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Croatia_village.jpg" width="300" style="margin:10px;">
+    <p class="fade" style="max-width:800px; margin:auto;">
+        Čaglin je malo mjesto u Slavoniji poznato po prirodi, miru i lijepom okruženju.
+        Ljudi žive opušteno i povezani su s prirodom.
+    </p>
 
-        <h2 style="margin-top:40px;">😂 Bonus</h2>
-        <p style="font-size:18px;">
-            Ako si ovo pročitao do kraja → LEGENDO 😎
-        </p>
+    <h2 id="about" class="fade" style="margin-top:50px;">📜 Zanimljivosti</h2>
 
-    </div>
+    <p class="fade" style="max-width:800px; margin:auto;">
+        Čaglin ima dugu povijest i poznat je po ruralnom načinu života.
+        Idealno je mjesto za odmor i mir.
+    </p>
+
+    <h2 id="gallery" class="fade" style="margin-top:50px;">🌄 Slike</h2>
+
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" width="250" style="margin:10px; border-radius:10px;">
+    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" width="250" style="margin:10px; border-radius:10px;">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" width="250" style="margin:10px; border-radius:10px;">
+
+    <h2 style="margin-top:50px;">😂 Bonus</h2>
+    <p>Ako si scrollao do kraja → legenda si 😎</p>
+
+</div>
+
+<!-- AUTORI -->
+<div style="padding:20px; text-align:right; font-size:14px;">
+    <b>Sudjelovali:</b><br>
+    Jakov Adamek<br>
+    Jakov Budić<br>
+    Mario Vidmar<br>
+    Stjepan Bertosi<br><br>
+
+    <b>Stranicu izradio:</b> Jakov Adamek 😄
+</div>
+
+<script>
+function toggleMode() {
+    document.body.classList.toggle("dark");
+    document.body.classList.toggle("light");
+}
+</script>
 
 </body>
 </html>

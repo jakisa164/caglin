@@ -2,80 +2,107 @@
 <html lang="hr">
 <head>
 <meta charset="UTF-8">
-<title>Šume, Jezera i Čaglin</title>
+<title>ČaglinCraft Server</title>
+
+<!-- Minecraft pixel font -->
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0b1a12;
-    color: #e6f2e6;
+    font-family: 'Press Start 2P', cursive;
+    background: url('https://images.unsplash.com/photo-1618331833071-1d0f6f1f6d5b') center/cover no-repeat fixed;
+    color: white;
 }
 
+/* DARK OVERLAY */
+.overlay {
+    background: rgba(0,0,0,0.75);
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+h1 {
+    color: #55ff55;
+    text-shadow: 3px 3px #000;
+}
+
+/* NAV */
 nav {
-    position: sticky;
-    top: 0;
-    background: #102418;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    padding: 15px;
-    z-index: 1000;
+    gap: 15px;
+    padding: 10px;
 }
 
 nav a {
-    color: white;
+    background: #2d6a2d;
+    padding: 10px;
     text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 8px;
+    color: white;
+    border: 2px solid #000;
 }
 
 nav a:hover {
-    background: #1f3d2a;
+    background: #3fbf3f;
 }
 
-header {
-    text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(#163322, #0b1a12);
-}
-
-section {
-    max-width: 900px;
-    margin: auto;
-    padding: 50px 20px;
-}
-
-.card {
-    background: #102418;
+/* BOX STYLE (Minecraft block) */
+.box {
+    background: #2b2b2b;
+    border: 3px solid #000;
     padding: 20px;
-    border-radius: 12px;
-    margin-top: 15px;
+    margin: 20px auto;
+    max-width: 900px;
 }
 
-.gallery {
+/* BUTTON */
+.button {
+    display: inline-block;
+    background: #3fbf3f;
+    padding: 10px;
+    border: 2px solid #000;
+    color: black;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background: #55ff55;
+}
+
+/* GRID */
+.grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    padding: 30px;
+    gap: 10px;
+    padding: 20px;
 }
 
-.gallery img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: 0.3s;
+.block {
+    background: #1f3b1f;
+    border: 3px solid #000;
+    padding: 15px;
 }
 
-.gallery img:hover {
-    transform: scale(1.05);
+/* SERVER STATUS */
+.status {
+    color: #55ff55;
+}
+
+.offline {
+    color: red;
 }
 
 footer {
     text-align: center;
     padding: 20px;
-    background: #08110c;
+    background: #111;
 }
 </style>
 
@@ -83,93 +110,81 @@ footer {
 
 <body>
 
-<nav>
-    <a href="#pocetak">Početak</a>
-    <a href="#priroda">Priroda</a>
-    <a href="#caglin">Čaglin</a>
-    <a href="#sela">Sela</a>
-    <a href="#galerija">Galerija</a>
-</nav>
+<div class="overlay">
 
-<header id="pocetak">
-    <h1>Šume, Jezera i Općina Čaglin</h1>
-    <p>Priroda, sela i mir Slavonije</p>
+<header>
+    <h1>⛏ ČaglinCraft Server</h1>
+    <p>Survival • Šume • Jezera • Roleplay</p>
 </header>
 
-<section id="priroda">
-    <h2>O prirodi</h2>
-    <div class="card">
-        Šume i jezera stvaraju prirodni mir, čisti zrak i bogat životinjski svijet.
-        Ovo područje je idealno za šetnje, odmor i bijeg od grada.
+<nav>
+    <a href="#home">Home</a>
+    <a href="#server">Server</a>
+    <a href="#caglin">Čaglin</a>
+    <a href="#sela">Sela</a>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="box">
+    <h2>Dobrodošao!</h2>
+    <p>
+        Ovo je Minecraft-style server stranica inspirirana općinom Čaglin i prirodom.
+        Igraj survival u šumama, istražuj sela i grade svoj svijet.
+    </p>
+
+    <a class="button" href="#">JOIN SERVER</a>
+</section>
+
+<!-- SERVER STATUS -->
+<section id="server" class="box">
+    <h2>Server Status</h2>
+
+    <p>IP: play.caglincraft.mc</p>
+    <p>Status: <span class="status">ONLINE</span></p>
+    <p>Players: 12 / 100</p>
+</section>
+
+<!-- ČAGLIN -->
+<section id="caglin" class="box">
+    <h2>Čaglin Region</h2>
+
+    <p>
+        Mapu inspirira stvarna općina Čaglin – šume, jezera i ruralna područja.
+        Survival iskustvo u prirodnom Minecraft svijetu.
+    </p>
+</section>
+
+<!-- SELA -->
+<section id="sela" class="box">
+    <h2>Sela u svijetu</h2>
+
+    <div class="grid">
+        <div class="block">Čaglin Town (spawn)</div>
+        <div class="block">Ruševo Village</div>
+        <div class="block">Latinovac Forest</div>
+        <div class="block">Ljeskovica Hills</div>
+        <div class="block">Migalovci Base</div>
+        <div class="block">Vlatkovac Farm</div>
     </div>
 </section>
 
-<section id="caglin">
-    <h2>Općina Čaglin</h2>
-    <div class="card">
-        <p>
-            <b>Čaglin</b> je općina u Slavoniji u Hrvatskoj, poznata po prirodi, šumama i manjim ruralnim naseljima.
-        </p>
-        <p>
-            Područje je mirno, s puno zelenila, poljoprivredom i malim selima koja čuvaju tradicionalni život.
-        </p>
-        <p>
-            U blizini se nalaze šumska područja, polja i prirodni krajolici idealni za istraživanje.
-        </p>
-    </div>
-</section>
+<!-- GALERIJA -->
+<section class="box">
+    <h2>World Preview</h2>
 
-<section id="sela">
-    <h2>Sela u općini Čaglin</h2>
-
-    <div class="card">
-        <p><b>U općini Čaglin nalaze se brojna sela i naselja, npr:</b></p>
-
-        <ul>
-            <li>Čaglin (središte općine)</li>
-            <li>Ruševo</li>
-            <li>Latinovac</li>
-            <li>Ljeskovica</li>
-            <li>Novi Migalovci</li>
-            <li>Stari Migalovci</li>
-            <li>Vlatkovac</li>
-        </ul>
-
-        <p style="opacity:0.8">
-            (Ako želiš, mogu ti dodati točan 100% kompletan popis svih sela i napraviti mapu)
-        </p>
-    </div>
-</section>
-
-<section>
-    <h2>Zanimljivosti o Čaglinu</h2>
-
-    <div class="card">
-        <ul>
-            <li>Područje je poznato po mirnom ruralnom životu</li>
-            <li>Okruženo je šumama i poljoprivrednim zemljištem</li>
-            <li>Idealno za lov, šetnje i prirodu</li>
-            <li>Stanovništvo živi u manjim naseljima</li>
-        </ul>
-    </div>
-</section>
-
-<section id="galerija">
-    <h2>Galerija prirode</h2>
-
-    <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
-        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e">
-        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b">
-        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e">
-        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+    <div class="grid">
+        <div class="block">🌲 Dense Forest Biome</div>
+        <div class="block">🏞 Lake Survival Zone</div>
+        <div class="block">🌾 Farming Fields</div>
+        <div class="block">⛰ Mountain Area</div>
     </div>
 </section>
 
 <footer>
-    <p>Stranica o prirodi i Općini Čaglin 🌲</p>
+    <p>© ČaglinCraft Server 2026</p>
 </footer>
+
+</div>
 
 </body>
 </html>

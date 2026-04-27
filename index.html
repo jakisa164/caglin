@@ -11,20 +11,14 @@ body{
     font-family: Arial;
     background: linear-gradient(120deg,#e6f2ff,#cfe8ff,#e6f2ff);
     overflow-x:hidden;
-    animation:bgMove 12s infinite alternate;
-}
-
-@keyframes bgMove{
-    from{background-position:0% 50%;}
-    to{background-position:100% 50%;}
 }
 
 /* HEADER */
 .header{
     background: linear-gradient(90deg,#003366,#0055aa);
     color:white;
-    padding:25px;
-    position:relative;
+    padding:30px;
+    text-align:center;
     animation:slideDown 1s ease;
 }
 
@@ -35,76 +29,88 @@ body{
 
 .header h1{
     margin:0;
-    animation:pulse 2s infinite;
 }
 
-@keyframes pulse{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.03);}
-    100%{transform:scale(1);}
-}
-
-/* DESNI INFO BOX */
-.info-box{
-    position:absolute;
-    top:10px;
-    right:20px;
-    font-size:13px;
-    text-align:right;
-    background:rgba(255,255,255,0.15);
-    padding:10px;
+/* INFO BOX ISPOD HEADERA */
+.side-info{
+    max-width:300px;
+    margin:20px 20px 0 auto;
+    font-size:16px;
+    color:black;
+    background:rgba(255,255,255,0.8);
+    padding:15px;
     border-radius:10px;
-    backdrop-filter:blur(10px);
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.side-info b{
+    font-size:18px;
 }
 
 /* CENTAR TEKST */
 .center{
     max-width:900px;
-    margin:60px auto;
+    margin:40px auto;
     padding:20px;
     background:rgba(255,255,255,0.7);
     border-radius:15px;
     box-shadow:0 10px 30px rgba(0,0,0,0.1);
     font-size:18px;
     line-height:1.7;
-    animation:fadeIn 1.5s ease;
 }
 
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
+/* GUMB */
+button{
+    display:block;
+    margin:20px auto;
+    padding:12px 20px;
+    border:none;
+    background:#0055aa;
+    color:white;
+    font-size:16px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-/* FLOAT ANIMACIJE SA STRANE */
-.side{
+button:hover{
+    background:#003f80;
+    transform:scale(1.05);
+}
+
+/* GALERIJA SKRIVENA */
+.gallery{
+    display:none;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    max-width:900px;
+    margin:20px auto;
+}
+
+.gallery img{
+    width:250px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
+
+/* FLOATING EFEKT */
+.particle{
     position:fixed;
-    width:80px;
-    height:80px;
-    background:rgba(0,102,204,0.2);
+    width:8px;
+    height:8px;
+    background:rgba(0,80,200,0.3);
     border-radius:50%;
-    animation:float 10s linear infinite;
+    animation:float 12s linear infinite;
 }
 
 @keyframes float{
-    from{transform:translateY(100vh) scale(0.5);}
-    to{transform:translateY(-10vh) scale(1);}
-}
-
-/* GALERIJA */
-.gallery{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-img{
-    border-radius:15px;
-    transition:0.4s;
-}
-
-img:hover{
-    transform:scale(1.08);
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-10vh);}
 }
 </style>
 </head>
@@ -113,53 +119,66 @@ img:hover{
 
 <div class="header">
     <h1>🌍 Dobro došli u Čaglin World</h1>
-
-    <div class="info-box">
-        U projektu sudjelovali:<br>
-        Jakov Adamek<br>
-        Jakov Budić<br>
-        Mario Vidmar<br>
-        Stjepan Bertosi<br><br>
-
-        Stranicu je izradio:<br>
-        Jakov Adamek<br><br>
-
-        zadao učitelj
-    </div>
 </div>
 
-<!-- CENTAR TEKST (~500 riječi) -->
+<!-- INFO ISPOD HEADERA -->
+<div class="side-info">
+    <b>U projektu sudjelovali:</b><br>
+    Jakov Adamek<br>
+    Jakov Budić<br>
+    Mario Vidmar<br>
+    Stjepan Bertosi<br><br>
+
+    <b>Stranicu je izradio:</b><br>
+    Jakov Adamek<br><br>
+
+    zadao učitelj
+</div>
+
+<!-- CENTAR TEKST -->
 <div class="center">
-    <h2>📍 O Čaglinu – detaljno</h2>
+    <h2>📍 O Čaglinu</h2>
     <p>
-    Čaglin je malo, ali iznimno zanimljivo mjesto smješteno u srcu Slavonije u Hrvatskoj. Iako na prvi pogled izgleda kao mirno ruralno naselje, on skriva bogatu povijest, toplinu ljudi i posebnu atmosferu koju je teško pronaći u većim gradovima. Okružen je prostranim poljima, šumama i blagim brežuljcima koji se mijenjaju kroz godišnja doba, stvarajući prekrasne pejzaže.
+    Čaglin je malo ali posebno mjesto u Slavoniji. Okružen je prirodom, poljima i šumama. Ljudi ovdje žive mirno i povezani su s prirodom. Tijekom godine kraj se mijenja i uvijek izgleda prekrasno, bilo da je proljeće, ljeto, jesen ili zima.
     </p>
     <p>
-    Tijekom proljeća, cijeli kraj procvjeta i postane zelen i živahan, dok ljeti pruža savršeno mjesto za odmor i bijeg od vrućine. Jesen donosi zlatne i crvene tonove koji prekrivaju prirodu, a zima stvara mirnu, gotovo bajkovitu atmosferu. Ljudi koji žive u Čaglinu poznati su po svojoj gostoljubivosti, jednostavnosti i povezanosti s prirodom.
+    Ovo mjesto ima dugu povijest i tradiciju. Ljudi se ovdje bave poljoprivredom i čuvaju stare običaje. Unatoč modernom vremenu, Čaglin je zadržao svoj mir i jednostavnost.
     </p>
     <p>
-    Povijest Čaglina seže daleko u prošlost, kada su se ljudi bavili uglavnom poljoprivredom i stočarstvom. I danas se mnogi bave istim poslovima, ali uz moderniji način života. Unatoč razvoju tehnologije i promjenama u svijetu, Čaglin je zadržao svoj tradicionalni duh i mir koji ga čini posebnim.
-    </p>
-    <p>
-    Ovo mjesto također ima važnu ulogu u lokalnoj zajednici jer okuplja ljude kroz razne događaje, manifestacije i druženja. Djeca odrastaju u sigurnom okruženju, a priroda im pruža prostor za igru i istraživanje. Stariji stanovnici prenose svoje znanje i običaje na mlađe generacije, čuvajući identitet mjesta.
-    </p>
-    <p>
-    Čaglin možda nije velik, ali njegova ljepota leži upravo u jednostavnosti. To je mjesto gdje se život odvija sporije, ali kvalitetnije, gdje ljudi imaju vremena jedni za druge i gdje priroda igra glavnu ulogu u svakodnevnom životu.
+    Život u Čaglinu je tih i opušten. Ljudi se poznaju, druže i pomažu jedni drugima. To daje posebnu toplinu cijelom mjestu.
     </p>
 </div>
 
-<h2 style="text-align:center;">🌄 Ljepote</h2>
+<!-- GUMB ZA SLIKE -->
+<button onclick="toggleGallery()">📸 Slike Čaglina</button>
 
-<div class="gallery">
-    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" width="250">
-    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" width="250">
-    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" width="250">
+<!-- GALERIJA (UBACIT ĆEŠ LINKOVE) -->
+<div class="gallery" id="gallery">
+    <!-- UBACI SVOJE SLIKE OVDJE -->
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
 </div>
 
-<!-- STRANE ANIMACIJE -->
-<div class="side" style="left:10px; animation-duration:12s;"></div>
-<div class="side" style="right:10px; animation-duration:15s; width:60px; height:60px;"></div>
-<div class="side" style="left:50%; animation-duration:18s; width:40px; height:40px;"></div>
+<script>
+function toggleGallery(){
+    let g = document.getElementById("gallery");
+    if(g.style.display === "flex"){
+        g.style.display = "none";
+    } else {
+        g.style.display = "flex";
+    }
+}
+
+// čestice
+for(let i=0;i<20;i++){
+    let p = document.createElement('div');
+    p.classList.add('particle');
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.animationDuration = (6 + Math.random()*10) + 's';
+    document.body.appendChild(p);
+}
+</script>
 
 </body>
 </html>

@@ -6,62 +6,88 @@
 <title>Općina Čaglin</title>
 
 <style>
+:root {
+  --bg: #1e1e2f;
+  --card: rgba(255,255,255,0.08);
+  --text: white;
+  --accent: #00ff88;
+}
+
+.light {
+  --bg: #f2f2f2;
+  --card: rgba(0,0,0,0.05);
+  --text: black;
+  --accent: #007a3d;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
-  color: white;
+  font-family: Arial;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
 }
 
 /* HEADER */
 header {
   background: linear-gradient(135deg, #1f5f3a, #144d2a);
   text-align: center;
-  padding: 60px 20px;
+  padding: 50px 20px;
 }
 
-header h1 {
-  font-size: 42px;
-  margin: 0;
+/* TOP BAR */
+.topbar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  background: #123d26;
 }
 
-/* TABOVI */
+button {
+  cursor: pointer;
+}
+
+/* SEARCH */
+#search {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  width: 200px;
+}
+
+/* TABS */
 .tabs {
   display: flex;
   justify-content: center;
-  background: #123d26;
   flex-wrap: wrap;
+  background: #123d26;
 }
 
 .tabs button {
   background: none;
   border: none;
   color: white;
-  padding: 15px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: 0.3s;
-}
-
-.tabs button:hover {
-  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  font-size: 15px;
 }
 
 .tabs button.active {
-  border-bottom: 3px solid #00ff88;
+  border-bottom: 3px solid var(--accent);
 }
 
-/* CONTENT */
+/* CONTAINER */
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 20px;
 }
 
+/* CONTENT */
 .tab-content {
   display: none;
   opacity: 0;
-  transition: 0.4s;
+  transition: 0.3s;
 }
 
 .tab-content.active {
@@ -71,23 +97,17 @@ header h1 {
 
 /* CARDS */
 .card {
-  background: rgba(255,255,255,0.08);
-  padding: 25px;
+  background: var(--card);
+  padding: 20px;
   border-radius: 15px;
-  margin-bottom: 20px;
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
+  margin-bottom: 15px;
 }
 
 /* GRID */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 15px;
 }
 
 /* IMAGES */
@@ -107,32 +127,10 @@ header h1 {
   transform: scale(1.05);
 }
 
-/* VIDEO */
-iframe {
-  width: 100%;
-  height: 350px;
-  border-radius: 10px;
-}
-
-/* AUTHOR */
-.project-info {
-  position: fixed;
-  bottom: 15px;
-  left: 15px;
-  background: rgba(0,0,0,0.5);
-  padding: 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  backdrop-filter: blur(10px);
-}
-
-/* CREDITS SCREEN */
+/* CREDITS */
 .credits {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: black;
   display: flex;
   justify-content: center;
@@ -142,20 +140,22 @@ iframe {
 
 .credits-content {
   text-align: center;
-  animation: scrollCredits 12s linear forwards;
+  animation: scroll 12s linear forwards;
 }
 
-.credits-content h2 {
-  color: #00ff88;
-}
-
-.credits-content p {
-  font-size: 18px;
-}
-
-@keyframes scrollCredits {
+@keyframes scroll {
   0% { transform: translateY(100%); }
   100% { transform: translateY(-120%); }
+}
+
+.skip {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  background: white;
+  border: none;
+  border-radius: 8px;
 }
 
 /* FOOTER */
@@ -174,6 +174,11 @@ footer {
   <p>Priroda, sela i Slavonija 🌿</p>
 </header>
 
+<div class="topbar">
+  <input id="search" placeholder="Pretraži stranicu..." onkeyup="searchContent()">
+  <button onclick="toggleTheme()">🌙/☀️</button>
+</div>
+
 <div class="tabs">
   <button class="tab-btn active" onclick="openTab('opcina')">O Čaglinu</button>
   <button class="tab-btn" onclick="openTab('priroda')">Priroda</button>
@@ -183,17 +188,14 @@ footer {
 
 <div class="container">
 
-<!-- OPĆINA -->
+<!-- OPCINA -->
 <div id="opcina" class="tab-content active">
   <div class="card">
     <h2>O općini Čaglin</h2>
-    <p>
-      Čaglin je općina u Slavoniji poznata po mirnom životu, poljoprivredi i prirodi.
-      Sastoji se od više sela i okružena je šumama i poljima.
-    </p>
-    <p>
-      Ljudi ovdje žive tradicionalno, bave se zemljoradnjom i uživaju u prirodnom okruženju.
-    </p>
+    <p>Čaglin se nalazi u Požeško-slavonskoj županiji i jedno je od mirnijih mjesta u Slavoniji.</p>
+    <p>Općina je okružena prirodom, poljima i šumama te ima više manjih sela.</p>
+    <p>Stanovništvo se uglavnom bavi poljoprivredom, stočarstvom i tradicionalnim načinom života.</p>
+    <p>Mjesto je poznato po miru, čistom zraku i snažnoj lokalnoj zajednici.</p>
   </div>
 </div>
 
@@ -203,20 +205,16 @@ footer {
 
     <div class="card">
       <h2>🌲 Šume</h2>
-      <p>
-        Šume oko Čaglina su guste, bogate hrastom, bukvom i grabom.
-        Pružaju dom mnogim životinjama i važan su dio prirode.
-      </p>
-      <p>
-        Idealne su za šetnje, biciklizam i uživanje u tišini prirode.
-      </p>
+      <p>Šume Čaglina su guste i bogate prirodom.</p>
+      <p>U njima raste hrast, bukva i grab, a šume su dom mnogim životinjama.</p>
+      <p>Ljudi ih koriste za šetnje, odmor i drvo.</p>
+      <p>U jesen izgledaju posebno lijepo zbog šarenih boja.</p>
     </div>
 
     <div class="card">
       <h2>🦌 Životinje</h2>
-      <p>
-        U prirodi se mogu vidjeti srne, lisice, zečevi i razne ptice.
-      </p>
+      <p>Srne, zečevi, lisice i ptice često se mogu vidjeti.</p>
+      <p>Priroda je mirna i pogodna za život divljih životinja.</p>
     </div>
 
   </div>
@@ -240,30 +238,21 @@ footer {
 <div id="video" class="tab-content">
   <div class="card">
     <h2>Priroda Slavonije</h2>
-    <p>Video prikazuje prirodu sličnu Čaglinu</p>
+    <p>Sličan krajolik kao u Čaglinu</p>
   </div>
 
-  <iframe src="https://www.youtube.com/embed/2OEL4P1Rz04"></iframe>
+  <iframe width="100%" height="350"
+  src="https://www.youtube.com/embed/2OEL4P1Rz04"></iframe>
 </div>
 
-</div>
-
-<!-- AUTOR -->
-<div class="project-info">
-  Sudjelovali:<br>
-  Jakov Adamek<br>
-  Jakov Budić<br>
-  Mario Vidmar<br>
-  Stjepan Bertosi<br>
-  <hr>
-  <strong>Stranicu izradio:</strong><br>
-  Jakov Adamek
 </div>
 
 <!-- CREDITS -->
-<div class="credits">
+<div class="credits" id="credits">
+  <button class="skip" onclick="skipCredits()">Skip</button>
+
   <div class="credits-content">
-    <h2>Sudjelovali u projektu</h2>
+    <h2>Sudjelovali</h2>
     <p>Jakov Adamek</p>
     <p>Jakov Budić</p>
     <p>Mario Vidmar</p>
@@ -278,15 +267,39 @@ footer {
 
 <script>
 function openTab(tab) {
-  let contents = document.querySelectorAll(".tab-content");
-  let buttons = document.querySelectorAll(".tab-btn");
+  let tabs = document.querySelectorAll(".tab-content");
+  let btns = document.querySelectorAll(".tab-btn");
 
-  contents.forEach(c => c.classList.remove("active"));
-  buttons.forEach(b => b.classList.remove("active"));
+  tabs.forEach(t => t.classList.remove("active"));
+  btns.forEach(b => b.classList.remove("active"));
 
   document.getElementById(tab).classList.add("active");
   event.target.classList.add("active");
 }
+
+/* DARK MODE */
+function toggleTheme() {
+  document.body.classList.toggle("light");
+}
+
+/* SEARCH */
+function searchContent() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let cards = document.querySelectorAll(".card");
+
+  cards.forEach(c => {
+    c.style.display = c.innerText.toLowerCase().includes(input) ? "block" : "none";
+  });
+}
+
+/* CREDITS SKIP */
+function skipCredits() {
+  document.getElementById("credits").style.display = "none";
+}
+
+setTimeout(() => {
+  document.getElementById("credits").style.display = "none";
+}, 13000);
 </script>
 
 </body>

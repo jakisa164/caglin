@@ -2,222 +2,174 @@
 <html lang="hr">
 <head>
 <meta charset="UTF-8">
-<title>Općina Čaglin - Školski projekt</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Općina Čaglin</title>
 
 <style>
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #eef3ee;
-    color: #1f2a1f;
-    line-height: 1.6;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+  color: white;
 }
 
 /* HEADER */
 header {
-    background: #1f4d2e;
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
+  background: linear-gradient(135deg, #1f5f3a, #144d2a);
+  text-align: center;
+  padding: 60px 20px;
+}
+
+header h1 {
+  font-size: 42px;
+  margin: 0;
+}
+
+header p {
+  opacity: 0.8;
 }
 
 /* NAV */
 nav {
-    background: #163820;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  text-align: center;
+  background: #123d26;
+  padding: 10px;
 }
 
 nav a {
-    color: white;
-    padding: 15px;
-    text-decoration: none;
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
 }
 
-nav a:hover {
-    background: #2e6b41;
-}
-
-/* SECTIONS */
-section {
-    max-width: 1000px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    margin-top: 15px;
-    border-radius: 10px;
+/* CONTAINER */
+.container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 20px;
 }
 
 /* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 10px;
+.sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
-.box {
-    background: #e6f2e6;
-    padding: 12px;
-    border-radius: 8px;
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.08);
+  padding: 30px;
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
 }
 
-/* CAT ANIMATION */
-.cat {
-    font-size: 40px;
-    display: inline-block;
-    animation: spin 4s linear infinite;
+.card:hover {
+  transform: translateY(-5px);
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.2); }
-    100% { transform: rotate(360deg) scale(1); }
+/* TAGS */
+.tags span {
+  display: inline-block;
+  background: #2f6f4f;
+  padding: 6px 10px;
+  border-radius: 10px;
+  margin: 5px;
+  font-size: 14px;
 }
 
-/* FLOAT EFFECT */
-.float {
-    animation: float 2s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+/* HERO IMAGE */
+.hero {
+  height: 250px;
+  background: url('https://source.unsplash.com/1600x400/?forest,nature') center/cover;
+  border-radius: 20px;
+  margin: 30px 0;
 }
 
 /* FOOTER */
 footer {
-    position: relative;
-    background: #163820;
-    color: white;
-    padding: 40px;
-    margin-top: 20px;
-}
-
-/* CREDITS BOX */
-.footer-box {
-    position: absolute;
-    right: 15px;
-    bottom: 15px;
-    background: rgba(0,0,0,0.35);
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 12px;
-    max-width: 260px;
-}
-
-/* SMALL IMPROVEMENTS */
-h2 {
-    border-left: 5px solid #1f4d2e;
-    padding-left: 10px;
+  background: #123d26;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 14px;
 }
 </style>
 
 </head>
-
 <body>
 
 <header>
-    <h1>Općina Čaglin</h1>
-    <p>Priroda, šume, sela i ruralni život Slavonije</p>
-    <div class="cat float">🐱</div>
+  <h1>Općina Čaglin</h1>
+  <p>Priroda, šume, sela i ruralni život Slavonije 🐱</p>
 </header>
 
 <nav>
-    <a href="#o">O Čaglinu</a>
-    <a href="#priroda">Priroda</a>
-    <a href="#sela">Sela</a>
-    <a href="#zanim">Zanimljivosti</a>
+  <a href="#">O Čaglinu</a>
+  <a href="#">Priroda</a>
+  <a href="#">Sela</a>
+  <a href="#">Zanimljivosti</a>
 </nav>
 
-<section id="o">
-    <h2>O općini Čaglin</h2>
-    <p>
-        Općina Čaglin nalazi se u Slavoniji i predstavlja ruralno i prirodno područje Hrvatske.
-        Karakteriziraju je mala naselja, poljoprivreda i velika šumska područja.
-    </p>
+<div class="container">
 
-    <p>
-        Ljudi žive mirnim životom, većinom se bave zemljoradnjom i stočarstvom.
-        Priroda ima veliku ulogu u svakodnevnom životu stanovnika.
-    </p>
+  <div class="hero"></div>
 
-    <p>
-        Područje je poznato po tišini, zelenilu i čistom zraku.
-    </p>
-</section>
+  <div class="sections">
 
-<section id="priroda">
-    <h2>Priroda</h2>
+    <div class="card">
+      <h2>O općini Čaglin</h2>
+      <p>
+        Općina Čaglin nalazi se u Slavoniji i poznata je po svojoj prirodi i mirnom načinu života.
+        Stanovništvo se bavi poljoprivredom i stočarstvom, a područje je bogato šumama i prirodnim ljepotama.
+      </p>
+    </div>
 
-    <p>
+    <div class="card">
+      <h2>Priroda</h2>
+      <p>
         Priroda Čaglina sastoji se od gustih šuma, livada i brežuljaka.
-        Ovo područje je bogato biljnim i životinjskim svijetom.
-    </p>
-
-    <p>
-        Šume imaju važnu ulogu u očuvanju prirodne ravnoteže i klime.
-        One su dom mnogim životinjama i biljkama.
-    </p>
-
-    <div class="grid">
-        <div class="box">🌲 Guste šume</div>
-        <div class="box">🌿 Livade</div>
-        <div class="box">🏞 Brežuljci</div>
-        <div class="box">🐾 Divlje životinje</div>
-        <div class="box">🌬 Čist zrak</div>
-        <div class="box">🌳 Prirodni mir</div>
+        Ovo područje je dom mnogim životinjama i biljkama.
+      </p>
+      <div class="tags">
+        <span>🌲 Šume</span>
+        <span>🌿 Biljke</span>
+        <span>🦌 Životinje</span>
+        <span>🍃 Čist zrak</span>
+      </div>
     </div>
-</section>
 
-<section id="sela">
-    <h2>Sela u općini Čaglin</h2>
-
-    <p>
+    <div class="card">
+      <h2>Sela u općini</h2>
+      <p>
         Općina Čaglin sastoji se od više sela koja čine lokalnu zajednicu.
-    </p>
-
-    <div class="grid">
-        <div class="box">Čaglin (središte)</div>
-        <div class="box">Ruševo</div>
-        <div class="box">Latinovac</div>
-        <div class="box">Ljeskovica</div>
-        <div class="box">Migalovci</div>
-        <div class="box">Vlatkovac</div>
-        <div class="box">Begić</div>
-        <div class="box">Darkovac</div>
+      </p>
+      <div class="tags">
+        <span>Čaglin</span>
+        <span>Ruševo</span>
+        <span>Ljeskovica</span>
+        <span>Migovci</span>
+        <span>Darkovac</span>
+      </div>
     </div>
 
-    <p>
-        Svako selo ima svoju povijest, tradiciju i način života.
-    </p>
-</section>
+    <div class="card">
+      <h2>Zanimljivosti</h2>
+      <ul>
+        <li>Mirno i tiho područje</li>
+        <li>Razvijena poljoprivreda</li>
+        <li>Blizina prirode</li>
+        <li>Tradicionalni način života</li>
+      </ul>
+    </div>
 
-<section id="zanim">
-    <h2>Zanimljivosti</h2>
+  </div>
 
-    <ul>
-        <li>Ruralno i mirno područje</li>
-        <li>Velike šumske površine</li>
-        <li>Poljoprivreda kao glavna djelatnost</li>
-        <li>Mala gustoća stanovništva</li>
-        <li>Očuvana priroda</li>
-    </ul>
-
-    <p>
-        <span class="cat">🐱</span> Mačke su česte u selima i dio su svakodnevnog života.
-    </p>
-</section>
+</div>
 
 <footer>
-    <div class="footer-box">
-        <p><b>Sudjelovali u projektu:</b><br>
-        Jakov Adamek, Jakov Budić, Mario Vidmar, Stjepan Bertosi</p>
-
-        <p><b>Stranicu izradio:</b> Jakov Adamek</p>
-    </div>
-
-    <p>© Školski projekt - Općina Čaglin</p>
+  © Školski projekt – Općina Čaglin
 </footer>
 
 </body>

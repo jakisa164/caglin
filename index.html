@@ -1,305 +1,251 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Općina Čaglin</title>
-
 <style>
-:root {
-  --bg: #1e1e2f;
-  --card: rgba(255,255,255,0.08);
-  --text: white;
-  --accent: #00ff88;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui, Arial, sans-serif;
+}
+html{
+  scroll-behavior:smooth;
+}
+body{
+  background:#0b1220;
+  color:#fff;
 }
 
-.light {
-  --bg: #f2f2f2;
-  --card: rgba(0,0,0,0.05);
-  --text: black;
-  --accent: #007a3d;
+/* INTRO */
+#intro{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.92);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+#intro .box{
+  text-align:center;
+  padding:30px;
+  max-width:500px;
+  animation:pop 0.6s ease;
+}
+#intro h1{
+  margin-bottom:15px;
+}
+#intro p{
+  opacity:0.8;
+  line-height:1.6;
+}
+#skip{
+  position:absolute;
+  top:20px;
+  right:20px;
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  background:#1f6f4a;
+  color:white;
 }
 
-body {
-  margin: 0;
-  font-family: Arial;
-  background: var(--bg);
-  color: var(--text);
-  transition: 0.3s;
+/* HERO */
+.hero{
+  height:75vh;
+  background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),
+  url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+.hero h1{
+  font-size:60px;
+}
+.hero p{
+  margin-top:10px;
+  opacity:0.85;
 }
 
-/* HEADER */
-header {
-  background: linear-gradient(135deg, #1f5f3a, #144d2a);
-  text-align: center;
-  padding: 50px 20px;
+nav{
+  background:#123b2a;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:15px;
+  flex-wrap:wrap;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:8px;
+  transition:0.3s;
+}
+nav a:hover{
+  background:#1f6f4a;
 }
 
-/* TOP BAR */
-.topbar {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  background: #123d26;
+.container{
+  max-width:1000px;
+  margin:60px auto;
+  padding:20px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:0.8s ease;
+}
+.container.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
-button {
-  cursor: pointer;
+.card{
+  background:#151c2b;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+.card p{
+  line-height:1.7;
+  opacity:0.85;
+  margin-bottom:10px;
 }
 
-/* SEARCH */
-#search {
-  padding: 8px;
-  border-radius: 8px;
-  border: none;
-  width: 200px;
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
+.gallery img{
+  width:100%;
+  border-radius:12px;
+  transition:0.3s;
+}
+.gallery img:hover{
+  transform:scale(1.05);
 }
 
-/* TABS */
-.tabs {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  background: #123d26;
+.map{
+  margin-top:20px;
+  border-radius:12px;
+  overflow:hidden;
 }
 
-.tabs button {
-  background: none;
-  border: none;
-  color: white;
-  padding: 15px;
-  font-size: 15px;
+footer{
+  text-align:center;
+  padding:30px;
+  opacity:0.5;
 }
 
-.tabs button.active {
-  border-bottom: 3px solid var(--accent);
+@keyframes pop{
+  from{transform:scale(0.9);opacity:0}
+  to{transform:scale(1);opacity:1}
 }
 
-/* CONTAINER */
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-}
-
-/* CONTENT */
-.tab-content {
-  display: none;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.tab-content.active {
-  display: block;
-  opacity: 1;
-}
-
-/* CARDS */
-.card {
-  background: var(--card);
-  padding: 20px;
-  border-radius: 15px;
-  margin-bottom: 15px;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
-
-/* IMAGES */
-.images {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.images img {
-  width: 100%;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-.images img:hover {
-  transform: scale(1.05);
-}
-
-/* CREDITS */
-.credits {
-  position: fixed;
-  inset: 0;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  z-index: 9999;
-}
-
-.credits-content {
-  text-align: center;
-  animation: scroll 12s linear forwards;
-}
-
-@keyframes scroll {
-  0% { transform: translateY(100%); }
-  100% { transform: translateY(-120%); }
-}
-
-.skip {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 10px;
-  background: white;
-  border: none;
-  border-radius: 8px;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #123d26;
+@media(max-width:600px){
+  .hero h1{font-size:40px;}
 }
 </style>
 </head>
-
 <body>
 
-<header>
-  <h1>Općina Čaglin</h1>
+<!-- INTRO -->
+<div id="intro">
+  <button id="skip" onclick="document.getElementById('intro').style.display='none'">Skip</button>
+  <div class="box">
+    <h1>Općina Čaglin</h1>
+    <p><b>Sudjelovali:</b><br>
+    Jakov Adamek<br>
+    Jakov Budić<br>
+    Mario Vidmar<br>
+    Stjepan Bertosi</p>
+    <br>
+    <p><b>Stranicu izradio:</b><br>Jakov Adamek</p>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Čaglin</h1>
   <p>Priroda, sela i Slavonija 🌿</p>
-</header>
-
-<div class="topbar">
-  <input id="search" placeholder="Pretraži stranicu..." onkeyup="searchContent()">
-  <button onclick="toggleTheme()">🌙/☀️</button>
 </div>
 
-<div class="tabs">
-  <button class="tab-btn active" onclick="openTab('opcina')">O Čaglinu</button>
-  <button class="tab-btn" onclick="openTab('priroda')">Priroda</button>
-  <button class="tab-btn" onclick="openTab('slike')">Slike</button>
-  <button class="tab-btn" onclick="openTab('video')">Video</button>
-</div>
+<!-- NAV -->
+<nav>
+  <a href="#info">O Čaglinu</a>
+  <a href="#priroda">Priroda</a>
+  <a href="#slike">Slike</a>
+  <a href="#mapa">Mapa</a>
+</nav>
 
-<div class="container">
-
-<!-- OPCINA -->
-<div id="opcina" class="tab-content active">
+<!-- INFO -->
+<div class="container section">
   <div class="card">
     <h2>O općini Čaglin</h2>
     <p>Čaglin se nalazi u Požeško-slavonskoj županiji i jedno je od mirnijih mjesta u Slavoniji.</p>
-    <p>Općina je okružena prirodom, poljima i šumama te ima više manjih sela.</p>
-    <p>Stanovništvo se uglavnom bavi poljoprivredom, stočarstvom i tradicionalnim načinom života.</p>
-    <p>Mjesto je poznato po miru, čistom zraku i snažnoj lokalnoj zajednici.</p>
+    <p>Okružen je poljima, šumama i manjim selima.</p>
+    <p>Stanovništvo se bavi poljoprivredom i tradicionalnim načinom života.</p>
   </div>
 </div>
 
-<!-- PRIRODA -->
-<div id="priroda" class="tab-content">
-  <div class="grid">
-
-    <div class="card">
-      <h2>🌲 Šume</h2>
-      <p>Šume Čaglina su guste i bogate prirodom.</p>
-      <p>U njima raste hrast, bukva i grab, a šume su dom mnogim životinjama.</p>
-      <p>Ljudi ih koriste za šetnje, odmor i drvo.</p>
-      <p>U jesen izgledaju posebno lijepo zbog šarenih boja.</p>
-    </div>
-
-    <div class="card">
-      <h2>🦌 Životinje</h2>
-      <p>Srne, zečevi, lisice i ptice često se mogu vidjeti.</p>
-      <p>Priroda je mirna i pogodna za život divljih životinja.</p>
-    </div>
-
-  </div>
-</div>
-
-<!-- SLIKE -->
-<div id="slike" class="tab-content">
+<!-- GALERIJA -->
+<div class="container section" id="slike">
   <div class="card">
     <h2>Galerija</h2>
-    <p>Priroda i krajolik Čaglina</p>
-  </div>
-
-  <div class="images">
-    <img src="https://source.unsplash.com/300x200/?forest">
-    <img src="https://source.unsplash.com/300x200/?village">
-    <img src="https://source.unsplash.com/300x200/?fields">
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" />
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" />
+      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e" />
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" />
+    </div>
   </div>
 </div>
 
-<!-- VIDEO -->
-<div id="video" class="tab-content">
+<!-- MAPA -->
+<div class="container section" id="mapa">
   <div class="card">
-    <h2>Priroda Slavonije</h2>
-    <p>Sličan krajolik kao u Čaglinu</p>
-  </div>
-
-  <iframe width="100%" height="350"
-  src="https://www.youtube.com/embed/2OEL4P1Rz04"></iframe>
-</div>
-
-</div>
-
-<!-- CREDITS -->
-<div class="credits" id="credits">
-  <button class="skip" onclick="skipCredits()">Skip</button>
-
-  <div class="credits-content">
-    <h2>Sudjelovali</h2>
-    <p>Jakov Adamek</p>
-    <p>Jakov Budić</p>
-    <p>Mario Vidmar</p>
-    <p>Stjepan Bertosi</p>
-
-    <h2>Stranicu izradio</h2>
-    <p><strong>Jakov Adamek</strong></p>
-
-    <p>Hvala na gledanju 🌿</p>
+    <h2>Lokacija Čaglina</h2>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27800.000000000!2d17.998!3d45.350" width="100%" height="300" style="border:0;" loading="lazy"></iframe>
+    </div>
   </div>
 </div>
+
+<footer>
+  Čaglin • Jakov Adamek
+</footer>
 
 <script>
-function openTab(tab) {
-  let tabs = document.querySelectorAll(".tab-content");
-  let btns = document.querySelectorAll(".tab-btn");
-
-  tabs.forEach(t => t.classList.remove("active"));
-  btns.forEach(b => b.classList.remove("active"));
-
-  document.getElementById(tab).classList.add("active");
-  event.target.classList.add("active");
+// intro skip
+function hideIntro(){
+  document.getElementById('intro').style.display='none';
 }
 
-/* DARK MODE */
-function toggleTheme() {
-  document.body.classList.toggle("light");
-}
-
-/* SEARCH */
-function searchContent() {
-  let input = document.getElementById("search").value.toLowerCase();
-  let cards = document.querySelectorAll(".card");
-
-  cards.forEach(c => {
-    c.style.display = c.innerText.toLowerCase().includes(input) ? "block" : "none";
+// scroll animation
+const sections=document.querySelectorAll('.section');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+    }
   });
-}
+},{threshold:0.2});
 
-/* CREDITS SKIP */
-function skipCredits() {
-  document.getElementById("credits").style.display = "none";
-}
-
-setTimeout(() => {
-  document.getElementById("credits").style.display = "none";
-}, 13000);
+sections.forEach(s=>observer.observe(s));
 </script>
 
 </body>

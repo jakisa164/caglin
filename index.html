@@ -13,12 +13,16 @@
 body{background:#050814;color:#fff;overflow-x:hidden;}
 html{scroll-behavior:smooth;}
 
+/* INTRO */
 #intro{
 position:fixed;inset:0;background:black;display:flex;align-items:center;justify-content:center;z-index:9999;
 }
-#intro .box{text-align:center;padding:30px;animation:fadeIn 2s ease;}
-#skip{position:absolute;top:20px;right:20px;padding:10px 15px;border:none;border-radius:10px;background:#1f6f4a;color:white;cursor:pointer;}
+#intro .box{padding:30px;text-align:center;animation:fadeIn 2s ease;}
+#skip{
+position:absolute;top:15px;right:15px;padding:10px 15px;border:none;border-radius:10px;background:#1f6f4a;color:#fff;cursor:pointer;z-index:10000;
+}
 
+/* HERO */
 .hero{
 height:90vh;
 background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.9)),url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover fixed;
@@ -40,18 +44,29 @@ nav a:hover{background:#1f6f4a;}
 
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px;}
 .gallery img{width:100%;height:180px;object-fit:cover;border-radius:14px;transition:0.3s;}
-.gallery img:hover{transform:scale(1.06);}
+.gallery img:hover{transform:scale(1.05);}
 
-.cat{position:fixed;right:20px;bottom:20px;width:95px;animation:spin 6s linear infinite;z-index:999;}
-.cat:hover{animation-play-state:paused;}
+/* CAT */
+.cat{
+position:fixed;right:20px;bottom:20px;width:95px;animation:spin 5s linear infinite, popIn 2s ease;
+z-index:999;
+}
 .cat img{width:100%;border-radius:50%;}
 
-#map{height:400px;border-radius:14px;margin-top:15px;}
+/* MOVING TEXT */
+.moving-text{
+position:fixed;top:60px;left:-300px;color:#1f6f4a;font-weight:bold;animation:moveText 10s linear infinite;
+z-index:9999;
+}
+
+#map{height:420px;border-radius:14px;margin-top:15px;}
 
 footer{text-align:center;padding:30px;opacity:0.5;}
 
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes popIn{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes moveText{0%{left:-300px}100%{left:110%}}
 </style>
 </head>
 <body>
@@ -64,13 +79,15 @@ footer{text-align:center;padding:30px;opacity:0.5;}
 <button id="skip" onclick="document.getElementById('intro').style.display='none'">Skip</button>
 <div class="box">
 <h1>Čaglin</h1>
-<p>Priroda Slavonije</p>
+<p>Šume, polja i Sovsko jezero</p>
 </div>
 </div>
 
+<div class="moving-text">Stranicu izradio Jakov Adamek ✨</div>
+
 <div class="hero">
 <h1>Čaglin</h1>
-<p>Šume, polja, vinogradi i Sovsko jezero 🌿</p>
+<p>Priroda Slavonije 🌿</p>
 </div>
 
 <nav>
@@ -82,7 +99,9 @@ footer{text-align:center;padding:30px;opacity:0.5;}
 <div class="container section" id="info">
 <div class="card">
 <h2>O Čaglinu</h2>
-<p>Čaglin je malo i mirno slavonsko mjesto smješteno u Požeško-slavonskoj županiji. Okruženo je prirodom, šumama, poljima i vinogradima koji daju posebnu ljepotu ovom kraju. Ljudi ovdje žive u skladu s prirodom i uglavnom se bave poljoprivredom, uzgojem žitarica i vinove loze. Tijekom godine polja mijenjaju boje – u proljeće su zelena, ljeti zlatna, a u jesen topla i zlatno-crvena. Posebno je poznato Sovsko jezero koje se nalazi u blizini i predstavlja prirodni biser ovog kraja. Čaglin je poznat po svojoj tišini, čistom zraku i opuštenom načinu života. Ovdje nema gradske gužve, nego prevladava mir, priroda i jednostavnost. Šume oko mjesta skrivaju brojne životinje i stvaraju osjećaj povezanosti s prirodom. Čaglin je mali, ali vrlo vrijedan dio Slavonije koji pokazuje ljepotu ruralnog života i prirodnog okoliša.</p>
+<p>
+Čaglin je malo slavonsko mjesto smješteno u Požeško-slavonskoj županiji koje odiše prirodnom ljepotom, mirnim životom i tradicionalnim načinom življenja. Okružen je gustim šumama, plodnim poljima i vinogradima koji mijenjaju boje kroz godišnja doba. U proljeće sve postaje zeleno i živo, ljeti zlatno i toplo, a u jesen kraj poprima crvenkaste i smeđe tonove. Ljudi u Čaglinu uglavnom se bave poljoprivredom, uzgojem žitarica, vinogradarstvom i stočarstvom, što ovom području daje posebnu povezanost s prirodom. Sovsko jezero, koje se nalazi u blizini, jedno je od najvažnijih prirodnih bisera ovog kraja i privlači posjetitelje svojom netaknutom vodom, tišinom i bogatim životinjskim svijetom. Čaglin je mjesto gdje nema gradske buke, nego dominira mir, priroda i osjećaj slobode. Šume skrivaju razne životinje, a šetnje kroz prirodu pružaju potpuni odmor za tijelo i um. Iako je mali, Čaglin ima veliku prirodnu vrijednost i predstavlja pravi primjer slavonskog ruralnog života.
+</p>
 </div>
 </div>
 
@@ -90,10 +109,10 @@ footer{text-align:center;padding:30px;opacity:0.5;}
 <div class="card">
 <h2>Priroda Čaglina</h2>
 <div class="gallery">
-<img src="https://image.pollinations.ai/prompt/slavonia%20forest%20croatia%20cinematic">
-<img src="https://image.pollinations.ai/prompt/vineyards%20croatia%20sunset%20fields">
-<img src="https://image.pollinations.ai/prompt/wheat%20fields%20slavonia%20croatia%20harvest">
-<img src="https://image.pollinations.ai/prompt/farmers%20working%20field%20croatia%20countryside">
+<img src="https://source.unsplash.com/800x600/?forest,croatia">
+<img src="https://source.unsplash.com/800x600/?wheat,field,slavonia">
+<img src="https://source.unsplash.com/800x600/?vineyard,croatia">
+<img src="https://source.unsplash.com/800x600/?farmers,field,nature">
 </div>
 </div>
 </div>
@@ -117,19 +136,24 @@ const sections=document.querySelectorAll('.section');
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')});},{threshold:0.2});
 sections.forEach(s=>obs.observe(s));
 
-var map=L.map('map').setView([45.33,17.85],10);
+// MAP FIXED
+var map=L.map('map').setView([45.389,17.77],10);
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:''}).addTo(map);
 
-var kutjevo=[45.338,17.72];
-var caglin=[45.35,17.98];
+var kutjevo=[45.428,17.773];
+var caglin=[45.350,17.981];
 
 L.marker(kutjevo).addTo(map).bindPopup("Kutjevo - OVDJE SE NALAZIMO 📍").openPopup();
 L.marker(caglin).addTo(map).bindPopup("Čaglin");
 
-L.polyline([kutjevo,caglin],{color:'red'}).addTo(map);
-L.circle(kutjevo,{color:'lime',fillColor:'#0f0',fillOpacity:0.2,radius:3000}).addTo(map);
+L.polyline([kutjevo,caglin],{color:'red',weight:4}).addTo(map);
+
+// CAT pop animation
+window.onload=()=>{
+ document.querySelector('.cat').style.transform='scale(1)';
+}
 </script>
 
 </body>
 </html>
-

@@ -10,113 +10,39 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial;}
-body{
-  background:#050814;
-  color:#fff;
-  overflow-x:hidden;
-}
+body{background:#050814;color:#fff;overflow-x:hidden;}
 html{scroll-behavior:smooth;}
 
-/* STARS */
-#stars{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-}
-
-/* CINEMATIC INTRO */
 #intro{
-  position:fixed;
-  inset:0;
-  background:black;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
+position:fixed;inset:0;background:black;display:flex;align-items:center;justify-content:center;z-index:9999;
 }
-#intro .box{
-  text-align:center;
-  padding:30px;
-  animation:fadeIn 2s ease;
-}
-#skip{
-  position:absolute;
-  top:20px;
-  right:20px;
-  padding:10px 15px;
-  border:none;
-  border-radius:10px;
-  background:#1f6f4a;
-  color:white;
-  cursor:pointer;
-}
+#intro .box{text-align:center;padding:30px;animation:fadeIn 2s ease;}
+#skip{position:absolute;top:20px;right:20px;padding:10px 15px;border:none;border-radius:10px;background:#1f6f4a;color:white;cursor:pointer;}
 
-/* HERO */
 .hero{
-  height:90vh;
-  background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.9)),
-  url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover fixed;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
+height:90vh;
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.9)),url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover fixed;
+display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
 }
-.hero h1{font-size:80px;animation:pop 1.2s ease;}
+.hero h1{font-size:80px;}
 .hero p{opacity:0.8;}
 
 nav{
-  background:rgba(10,20,30,0.7);
-  backdrop-filter:blur(10px);
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  padding:15px;
-  position:sticky;
-  top:0;
-  z-index:10;
+background:rgba(10,20,30,0.7);backdrop-filter:blur(10px);display:flex;justify-content:center;gap:20px;padding:15px;position:sticky;top:0;z-index:10;
 }
 nav a{color:#fff;text-decoration:none;padding:8px 12px;border-radius:8px;}
 nav a:hover{background:#1f6f4a;}
 
-.container{
-  max-width:1100px;
-  margin:70px auto;
-  padding:20px;
-  opacity:0;
-  transform:translateY(40px);
-  transition:0.8s;
-}
+.container{max-width:1100px;margin:70px auto;padding:20px;opacity:0;transform:translateY(40px);transition:0.8s;}
 .container.show{opacity:1;transform:translateY(0);}
 
-.card{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  padding:25px;
-  border-radius:20px;
-  backdrop-filter:blur(10px);
-}
+.card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:25px;border-radius:20px;backdrop-filter:blur(10px);}
 
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-  margin-top:20px;
-}
-.gallery img{
-  width:100%;height:180px;object-fit:cover;border-radius:14px;
-  transition:0.3s;
-}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px;}
+.gallery img{width:100%;height:180px;object-fit:cover;border-radius:14px;transition:0.3s;}
 .gallery img:hover{transform:scale(1.06);}
 
-.cat{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  width:95px;
-  animation:spin 6s linear infinite;
-  z-index:999;
-}
+.cat{position:fixed;right:20px;bottom:20px;width:95px;animation:spin 6s linear infinite;z-index:999;}
 .cat:hover{animation-play-state:paused;}
 .cat img{width:100%;border-radius:50%;}
 
@@ -126,52 +52,48 @@ footer{text-align:center;padding:30px;opacity:0.5;}
 
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes pop{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}
 </style>
 </head>
 <body>
-
-<canvas id="stars"></canvas>
 
 <audio autoplay loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9b2f1c7c5d.mp3" type="audio/mpeg">
 </audio>
 
-<!-- INTRO -->
 <div id="intro">
-  <button id="skip" onclick="document.getElementById('intro').style.display='none'">Skip</button>
-  <div class="box">
-    <h1>Čaglin</h1>
-    <p>Putovanje kroz šume i Sovsko jezero</p>
-  </div>
+<button id="skip" onclick="document.getElementById('intro').style.display='none'">Skip</button>
+<div class="box">
+<h1>Čaglin</h1>
+<p>Priroda Slavonije</p>
+</div>
 </div>
 
 <div class="hero">
-  <h1>Čaglin</h1>
-  <p>Priroda, šume i Sovsko jezero 🌿</p>
+<h1>Čaglin</h1>
+<p>Šume, polja, vinogradi i Sovsko jezero 🌿</p>
 </div>
 
 <nav>
 <a href="#info">O Čaglinu</a>
 <a href="#slike">Slike</a>
-<a href="#mapa">Mapa</a>
+<a href="#mapa">Karta</a>
 </nav>
 
 <div class="container section" id="info">
 <div class="card">
 <h2>O Čaglinu</h2>
-<p>Čaglin je mirno slavonsko mjesto okruženo šumama, poljima i prirodom. Njegova posebnost je Sovsko jezero koje privlači posjetitelje svojom netaknutom ljepotom. Ljudi ovdje žive jednostavno i povezano s prirodom. Ovaj kraj odiše mirom, zelenilom i tradicionalnim načinom života. Šume skrivaju mnoge životinje, a cijeli kraj pruža osjećaj bijega od modernog svijeta. Čaglin je malo mjesto, ali veliko po prirodnoj vrijednosti i ljepoti.</p>
+<p>Čaglin je malo i mirno slavonsko mjesto smješteno u Požeško-slavonskoj županiji. Okruženo je prirodom, šumama, poljima i vinogradima koji daju posebnu ljepotu ovom kraju. Ljudi ovdje žive u skladu s prirodom i uglavnom se bave poljoprivredom, uzgojem žitarica i vinove loze. Tijekom godine polja mijenjaju boje – u proljeće su zelena, ljeti zlatna, a u jesen topla i zlatno-crvena. Posebno je poznato Sovsko jezero koje se nalazi u blizini i predstavlja prirodni biser ovog kraja. Čaglin je poznat po svojoj tišini, čistom zraku i opuštenom načinu života. Ovdje nema gradske gužve, nego prevladava mir, priroda i jednostavnost. Šume oko mjesta skrivaju brojne životinje i stvaraju osjećaj povezanosti s prirodom. Čaglin je mali, ali vrlo vrijedan dio Slavonije koji pokazuje ljepotu ruralnog života i prirodnog okoliša.</p>
 </div>
 </div>
 
 <div class="container section" id="slike">
 <div class="card">
-<h2>AI šume i Sovsko jezero</h2>
+<h2>Priroda Čaglina</h2>
 <div class="gallery">
-<img src="https://image.pollinations.ai/prompt/forest%20croatia%20cinematic%20sunlight">
-<img src="https://image.pollinations.ai/prompt/sovsko%20lake%20mist%20croatia">
-<img src="https://image.pollinations.ai/prompt/deep%20forest%20slavonia%20mystic">
-<img src="https://image.pollinations.ai/prompt/caglin%20forest%20path%20nature">
+<img src="https://image.pollinations.ai/prompt/slavonia%20forest%20croatia%20cinematic">
+<img src="https://image.pollinations.ai/prompt/vineyards%20croatia%20sunset%20fields">
+<img src="https://image.pollinations.ai/prompt/wheat%20fields%20slavonia%20croatia%20harvest">
+<img src="https://image.pollinations.ai/prompt/farmers%20working%20field%20croatia%20countryside">
 </div>
 </div>
 </div>
@@ -195,7 +117,6 @@ const sections=document.querySelectorAll('.section');
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')});},{threshold:0.2});
 sections.forEach(s=>obs.observe(s));
 
-// MAP
 var map=L.map('map').setView([45.33,17.85],10);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:''}).addTo(map);
 
@@ -205,39 +126,10 @@ var caglin=[45.35,17.98];
 L.marker(kutjevo).addTo(map).bindPopup("Kutjevo - OVDJE SE NALAZIMO 📍").openPopup();
 L.marker(caglin).addTo(map).bindPopup("Čaglin");
 
-var route=L.polyline([kutjevo,caglin],{color:'red'}).addTo(map);
-
-// moving car animation
-var car=L.marker(kutjevo).addTo(map);
-var i=0;
-function move(){
-  i+=0.005;
-  if(i>1)i=0;
-  var lat=kutjevo[0]+(caglin[0]-kutjevo[0])*i;
-  var lng=kutjevo[1]+(caglin[1]-kutjevo[1])*i;
-  car.setLatLng([lat,lng]);
-  requestAnimationFrame(move);
-}
-move();
-
-// STARS
-const c=document.getElementById('stars');
-const ctx=c.getContext('2d');
-c.width=window.innerWidth;
-c.height=window.innerHeight;
-let s=[];
-for(let i=0;i<120;i++)s.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2});
-function draw(){
-ctx.clearRect(0,0,c.width,c.height);
-ctx.fillStyle="white";
-s.forEach(o=>{
-ctx.beginPath();ctx.arc(o.x,o.y,o.r,0,Math.PI*2);ctx.fill();
-o.y+=0.2;if(o.y>c.height)o.y=0;
-});
-requestAnimationFrame(draw);
-}
-draw();
+L.polyline([kutjevo,caglin],{color:'red'}).addTo(map);
+L.circle(kutjevo,{color:'lime',fillColor:'#0f0',fillOpacity:0.2,radius:3000}).addTo(map);
 </script>
 
 </body>
 </html>
+

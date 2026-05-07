@@ -1,389 +1,478 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Čaglin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Čaglin Ultimate</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    body {
-      background: #050816;
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-    }
+<style>
 
-    /* INTRO */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
 
-    #intro {
-      position: fixed;
-      width: 100%;
-      height: 100vh;
-      background: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 99999;
-      animation: hideIntro 2s ease forwards;
-      animation-delay: 5s;
-    }
+body{
+font-family:'Poppins',sans-serif;
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
 
-    @keyframes hideIntro {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
+/* INTRO */
 
-    .intro-text {
-      text-align: center;
-      opacity: 0;
-      transform: translateY(40px) scale(0.9);
-      animation: introAnim 2s forwards;
-      filter: blur(10px);
-    }
+#intro{
+position:fixed;
+width:100%;
+height:100vh;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:99999;
+animation:hideIntro 2s forwards;
+animation-delay:5s;
+}
 
-    @keyframes introAnim {
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-      }
-    }
+@keyframes hideIntro{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
 
-    .intro-title {
-      font-size: 3rem;
-      font-family: 'Orbitron', sans-serif;
-      margin-bottom: 20px;
-      color: white;
-      text-shadow: 0 0 20px red;
-    }
+.intro-content{
+text-align:center;
+animation:introAnim 2s ease forwards;
+}
 
-    .intro-names {
-      line-height: 2;
-      font-size: 1.2rem;
-      color: #d0d0d0;
-    }
+@keyframes introAnim{
+from{
+opacity:0;
+transform:translateY(50px);
+filter:blur(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+filter:blur(0);
+}
+}
 
-    .creator {
-      margin-top: 30px;
-      color: #ff3b3b;
-      font-size: 1.3rem;
-    }
+.intro-title{
+font-size:3rem;
+font-family:'Orbitron';
+margin-bottom:25px;
+color:white;
+text-shadow:0 0 25px #00bfff;
+}
 
-    /* HERO */
+.intro-names{
+line-height:2;
+font-size:1.2rem;
+color:#cfcfcf;
+}
 
-    .hero {
-      height: 100vh;
-      background:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
-        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
+.creator{
+margin-top:30px;
+font-size:1.3rem;
+color:#00bfff;
+}
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
-      animation: rotate 20s linear infinite;
-    }
+/* HERO */
 
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.75)),
+url('https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1600&auto=format&fit=crop')
+center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      animation: fadeUp 2s ease;
-    }
+.hero::before{
+content:'';
+position:absolute;
+width:200%;
+height:200%;
+background:radial-gradient(circle,rgba(255,255,255,0.05),transparent);
+animation:rotate 25s linear infinite;
+}
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+@keyframes rotate{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
 
-    .hero h1 {
-      font-size: 6rem;
-      font-family: 'Orbitron', sans-serif;
-      text-shadow: 0 0 25px rgba(255,255,255,0.6);
-    }
+.hero-content{
+position:relative;
+z-index:2;
+animation:fadeUp 2s ease;
+}
 
-    .hero p {
-      margin-top: 15px;
-      font-size: 1.3rem;
-      color: #d6d6d6;
-    }
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
 
-    /* CONTENT */
+.hero h1{
+font-size:7rem;
+font-family:'Orbitron';
+background:linear-gradient(90deg,#fff,#00bfff,#fff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 40px rgba(0,191,255,0.6);
+}
 
-    section {
-      padding: 100px 10%;
-    }
+.hero p{
+font-size:1.3rem;
+margin-top:20px;
+color:#dcdcdc;
+}
 
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 50px;
-      text-align: center;
-      font-family: 'Orbitron', sans-serif;
-    }
+/* SECTION */
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
+section{
+padding:100px 10%;
+}
 
-    .card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 30px;
-      backdrop-filter: blur(10px);
-      transition: 0.4s;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    }
+.section-title{
+font-size:2.7rem;
+font-family:'Orbitron';
+margin-bottom:50px;
+text-align:center;
+}
 
-    .card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 0 30px rgba(255,0,0,0.4);
-    }
+/* CARDS */
 
-    .card h3 {
-      margin-bottom: 15px;
-      color: #ff4d4d;
-    }
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
 
-    /* GALLERY */
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+padding:30px;
+border-radius:25px;
+backdrop-filter:blur(15px);
+transition:0.4s;
+box-shadow:0 0 25px rgba(0,0,0,0.4);
+}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 35px rgba(0,191,255,0.4);
+}
 
-    .gallery img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 20px;
-      transition: 0.4s;
-    }
+.card h3{
+margin-bottom:15px;
+color:#00bfff;
+}
 
-    .gallery img:hover {
-      transform: scale(1.05);
-      filter: brightness(1.1);
-    }
+/* GALLERY */
 
-    /* MAP */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
 
-    .map-container {
-      position: relative;
-      width: 100%;
-      height: 500px;
-      border-radius: 25px;
-      overflow: hidden;
-      border: 2px solid rgba(255,255,255,0.1);
-      box-shadow: 0 0 40px rgba(255,0,0,0.2);
-    }
+.gallery img{
+width:100%;
+height:260px;
+object-fit:cover;
+border-radius:25px;
+transition:0.5s;
+}
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      filter: grayscale(0.7) contrast(1.2);
-    }
+.gallery img:hover{
+transform:scale(1.05);
+filter:brightness(1.1);
+}
 
-    .pulse {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 25px;
-      height: 25px;
-      background: red;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 20px red;
-    }
+/* MAP */
 
-    .pulse::before,
-    .pulse::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: rgba(255,0,0,0.4);
-      animation: pulse 2s infinite;
-    }
+.map-box{
+position:relative;
+width:100%;
+height:550px;
+overflow:hidden;
+border-radius:25px;
+border:2px solid rgba(255,255,255,0.1);
+box-shadow:0 0 35px rgba(0,191,255,0.2);
+}
 
-    .pulse::after {
-      animation-delay: 1s;
-    }
+.map-box iframe{
+width:100%;
+height:100%;
+border:none;
+filter:grayscale(0.3) brightness(0.8);
+}
 
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: scale(5);
-        opacity: 0;
-      }
-    }
+.route{
+position:absolute;
+width:250px;
+height:4px;
+background:#00bfff;
+top:52%;
+left:46%;
+transform:rotate(-40deg);
+box-shadow:0 0 20px #00bfff;
+}
 
-    /* FOOTER */
+.pulse{
+position:absolute;
+bottom:22%;
+right:28%;
+width:25px;
+height:25px;
+background:#00ff88;
+border-radius:50%;
+box-shadow:0 0 25px #00ff88;
+}
 
-    footer {
-      padding: 40px;
-      text-align: center;
-      background: rgba(0,0,0,0.5);
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: #cfcfcf;
-    }
+.pulse::before{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+border-radius:50%;
+background:rgba(0,255,136,0.4);
+animation:pulse 2s infinite;
+}
 
-    /* RESPONSIVE */
+@keyframes pulse{
+0%{
+transform:scale(1);
+opacity:1;
+}
+100%{
+transform:scale(5);
+opacity:0;
+}
+}
 
-    @media(max-width: 768px) {
-      .hero h1 {
-        font-size: 3.5rem;
-      }
+/* AUDIO */
 
-      .hero p {
-        font-size: 1rem;
-      }
+.audio-box{
+margin-top:40px;
+text-align:center;
+}
 
-      .intro-title {
-        font-size: 2rem;
-      }
-    }
+/* FOOTER */
 
-  </style>
+footer{
+padding:40px;
+text-align:center;
+background:rgba(0,0,0,0.4);
+border-top:1px solid rgba(255,255,255,0.1);
+position:relative;
+}
+
+/* CAT */
+
+.cat{
+position:fixed;
+right:20px;
+bottom:20px;
+width:120px;
+z-index:9999;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:4rem;
+}
+
+.intro-title{
+font-size:2rem;
+}
+
+}
+
+</style>
 </head>
 <body>
 
-  <!-- INTRO -->
+<!-- INTRO -->
 
-  <div id="intro">
-    <div class="intro-text">
-      <div class="intro-title">Sudjelovali u projektu</div>
+<div id="intro">
 
-      <div class="intro-names">
-        Jakov Adamek<br>
-        Jakov Budić<br>
-        Stjepan Bertosi<br>
-        Mario Vidmar
-      </div>
+<div class="intro-content">
 
-      <div class="creator">
-        Stranicu izradio Jakov Adamek
-      </div>
-    </div>
-  </div>
+<div class="intro-title">
+Sudjelovali u projektu
+</div>
 
-  <!-- HERO -->
+<div class="intro-names">
+Jakov Adamek<br>
+Jakov Budić<br>
+Stjepan Bertosi<br>
+Mario Vidmar
+</div>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Čaglin</h1>
-      <p>Srce prirode i Slavonije</p>
-    </div>
-  </section>
+<div class="creator">
+Stranicu izradio Jakov Adamek
+</div>
 
-  <!-- INFO -->
+</div>
+</div>
 
-  <section>
-    <h2 class="section-title">O Čaglinu</h2>
+<!-- HERO -->
 
-    <div class="cards">
-      <div class="card">
-        <h3>Priroda</h3>
-        <p>
-          Čaglin je malo slavonsko mjesto poznato po svojoj prirodi, miru i prekrasnim krajolicima. Okružen je velikim šumama, zelenim brežuljcima i nepreglednim poljima koja tijekom godine mijenjaju boje i stvaraju poseban ugođaj. U proljeće i ljeto priroda postaje puna života, ptice pjevaju, a zrak je svjež i čist. Mnogi ljudi vole dolaziti ovdje zbog mira, opuštanja i prirodnog ambijenta koji podsjeća na stari slavonski način života.
-        </p>
-      </div>
+<section class="hero">
 
-      <div class="card">
-        <h3>Povijest</h3>
-        <p>
-          Povijest Čaglina seže mnogo godina unatrag, a mjesto je tijekom vremena postalo važan dio Požeško-slavonske županije. Poznato je po svojoj željezničkoj povezanosti, tradicionalnom načinu života i gostoljubivim ljudima. Kroz godine su se ovdje razvijali poljoprivreda, obrt i svakodnevni život karakterističan za Slavoniju. Danas Čaglin predstavlja spoj prirode, tradicije i modernog života.
-        </p>
-      </div>
+<div class="hero-content">
 
-      <div class="card">
-        <h3>Život</h3>
-        <p>
-          Život u Čaglinu je miran i opušten. Ljudi ovdje cijene prirodu, zajedništvo i tradiciju. Tijekom godine održavaju se različiti događaji, okupljanja i druženja koja povezuju lokalno stanovništvo. Okolica mjesta posebno je lijepa tijekom zalaska sunca kada polja i šume dobivaju zlatne boje. Upravo zato mnogi smatraju da je Čaglin jedno od skrivenih mirnih mjesta Slavonije.
-        </p>
-      </div>
-    </div>
-  </section>
+<h1>Čaglin</h1>
 
-  <!-- GALLERY -->
+<p>Srce prirode i Slavonije</p>
 
-  <section>
-    <h2 class="section-title">Galerija</h2>
+</div>
 
-    <div class="gallery">
-      <audio autoplay loop>
-        <source src="https://www.soundjay.com/nature/birds-1.mp3" type="audio/mpeg">
-      </audio>
-      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200&auto=format&fit=crop">
+</section>
 
-      <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=1200&auto=format&fit=crop">
+<!-- ABOUT -->
 
-      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop">
-    </div>
-  </section>
+<section>
 
-  <!-- MAP -->
+<h2 class="section-title">
+O Čaglinu
+</h2>
 
-  <section>
-    <h2 class="section-title">Lokacija</h2>
+<div class="cards">
 
-    <div class="map-container">
-      <iframe
-        src="https://www.google.com/maps?q=Osnovna+škola+Zdenka+Turkovića+Kutjevo&output=embed">
-      </iframe>
+<div class="card">
 
-      <div class="pulse"></div>
-    </div>
-  </section>
+<h3>Priroda</h3>
 
-  <!-- FOOTER -->
+<p>
+Čaglin je okružen prekrasnim slavonskim šumama, poljima i prirodom.
+Mir, tišina i zvuk ptica daju ovom mjestu poseban ugođaj.
+</p>
 
-  <footer>
-    Web stranicu izradio Jakov Adamek
-    <img src="https://media.tenor.com/mGifcxQh7S8AAAAi/cat-cat-meme.gif"
-    style="position:fixed;bottom:20px;right:20px;width:90px;z-index:9999;">
+</div>
+
+<div class="card">
+
+<h3>Povijest</h3>
+
+<p>
+Mjesto ima bogatu povijest i važan položaj u Požeško-slavonskoj županiji.
+Poznato je po prirodi i tradicionalnom slavonskom životu.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Život</h3>
+
+<p>
+Ljudi u Čaglinu cijene zajedništvo, prirodu i miran život.
+Mjesto je idealno za opuštanje i uživanje u prirodi.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section>
+
+<h2 class="section-title">
+Galerija
+</h2>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+</section>
+
+<!-- MAP -->
+
+<section>
+
+<h2 class="section-title">
+Ruta do Čaglina
+</h2>
+
+<div class="map-box">
+
+<iframe
+src="https://www.google.com/maps?q=Osnovna+škola+Zdenka+Turkovića+Kutjevo&output=embed">
+</iframe>
+
+<div class="route"></div>
+
+<div class="pulse"></div>
+
+</div>
+
+</section>
+
+<!-- AUDIO -->
+
+<section class="audio-box">
+
+<h2 class="section-title">
+Zvuk prirode
+</h2>
+
+<audio controls autoplay loop>
+
+<source src="https://www.soundjay.com/nature/birds-1.mp3" type="audio/mpeg">
+
+</audio>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+Općina Čaglin Ultimate Edition<br><br>
+
+Web stranicu izradio Jakov Adamek
 
 </footer>
+
+<!-- CAT -->
+
+<img class="cat"
+src="https://media.tenor.com/mGifcxQh7S8AAAAi/cat-cat-meme.gif">
 
 </body>
 </html>

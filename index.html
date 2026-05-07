@@ -1,159 +1,354 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Općina Čaglin - Ultimate</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Čaglin</title>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial;}
-body{background:#050814;color:#fff;overflow-x:hidden;}
-html{scroll-behavior:smooth;}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-/* INTRO */
-#intro{
-position:fixed;inset:0;background:black;display:flex;align-items:center;justify-content:center;z-index:9999;
-}
-#intro .box{padding:30px;text-align:center;animation:fadeIn 2s ease;}
-#skip{
-position:absolute;top:15px;right:15px;padding:10px 15px;border:none;border-radius:10px;background:#1f6f4a;color:#fff;cursor:pointer;z-index:10000;
-}
+    body {
+      background: #050816;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
 
-/* HERO */
-.hero{
-height:90vh;
-background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.9)),url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover fixed;
-display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-}
-.hero h1{font-size:80px;}
-.hero p{opacity:0.8;}
+    /* INTRO */
 
-nav{
-background:rgba(10,20,30,0.7);backdrop-filter:blur(10px);display:flex;justify-content:center;gap:20px;padding:15px;position:sticky;top:0;z-index:10;
-}
-nav a{color:#fff;text-decoration:none;padding:8px 12px;border-radius:8px;}
-nav a:hover{background:#1f6f4a;}
+    #intro {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 99999;
+      animation: hideIntro 2s ease forwards;
+      animation-delay: 5s;
+    }
 
-.container{max-width:1100px;margin:70px auto;padding:20px;opacity:0;transform:translateY(40px);transition:0.8s;}
-.container.show{opacity:1;transform:translateY(0);}
+    @keyframes hideIntro {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
 
-.card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:25px;border-radius:20px;backdrop-filter:blur(10px);}
+    .intro-text {
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px) scale(0.9);
+      animation: introAnim 2s forwards;
+      filter: blur(10px);
+    }
 
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px;}
-.gallery img{width:100%;height:180px;object-fit:cover;border-radius:14px;transition:0.3s;}
-.gallery img:hover{transform:scale(1.05);}
+    @keyframes introAnim {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
 
-/* CAT */
-.cat{
-position:fixed;right:20px;bottom:20px;width:95px;animation:spin 5s linear infinite, popIn 2s ease;
-z-index:999;
-}
-.cat img{width:100%;border-radius:50%;}
+    .intro-title {
+      font-size: 3rem;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+      color: white;
+      text-shadow: 0 0 20px red;
+    }
 
-/* MOVING TEXT */
-.moving-text{
-position:fixed;top:60px;left:-300px;color:#1f6f4a;font-weight:bold;animation:moveText 10s linear infinite;
-z-index:9999;
-}
+    .intro-names {
+      line-height: 2;
+      font-size: 1.2rem;
+      color: #d0d0d0;
+    }
 
-#map{height:420px;border-radius:14px;margin-top:15px;}
+    .creator {
+      margin-top: 30px;
+      color: #ff3b3b;
+      font-size: 1.3rem;
+    }
 
-footer{text-align:center;padding:30px;opacity:0.5;}
+    /* HERO */
 
-@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes popIn{from{transform:scale(0)}to{transform:scale(1)}}
-@keyframes moveText{0%{left:-300px}100%{left:110%}}
-</style>
+    .hero {
+      height: 100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
+        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 2s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1 {
+      font-size: 6rem;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 25px rgba(255,255,255,0.6);
+    }
+
+    .hero p {
+      margin-top: 15px;
+      font-size: 1.3rem;
+      color: #d6d6d6;
+    }
+
+    /* CONTENT */
+
+    section {
+      padding: 100px 10%;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      transition: 0.4s;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 0 30px rgba(255,0,0,0.4);
+    }
+
+    .card h3 {
+      margin-bottom: 15px;
+      color: #ff4d4d;
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: 0.4s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    /* MAP */
+
+    .map-container {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      border-radius: 25px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 40px rgba(255,0,0,0.2);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(0.7) contrast(1.2);
+    }
+
+    .pulse {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      background: red;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 20px red;
+    }
+
+    .pulse::before,
+    .pulse::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: rgba(255,0,0,0.4);
+      animation: pulse 2s infinite;
+    }
+
+    .pulse::after {
+      animation-delay: 1s;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(5);
+        opacity: 0;
+      }
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 40px;
+      text-align: center;
+      background: rgba(0,0,0,0.5);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #cfcfcf;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width: 768px) {
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .intro-title {
+        font-size: 2rem;
+      }
+    }
+
+  </style>
 </head>
 <body>
 
-<audio autoplay loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9b2f1c7c5d.mp3" type="audio/mpeg">
-</audio>
+  <!-- INTRO -->
 
-<div id="intro">
-<button id="skip" onclick="document.getElementById('intro').style.display='none'">Skip</button>
-<div class="box">
-<h1>Čaglin</h1>
-<p>Šume, polja i Sovsko jezero</p>
-</div>
-</div>
+  <div id="intro">
+    <div class="intro-text">
+      <div class="intro-title">Sudjelovali u projektu</div>
 
-<div class="moving-text">Stranicu izradio Jakov Adamek ✨</div>
+      <div class="intro-names">
+        Jakov Adamek<br>
+        Jakov Budić<br>
+        Stjepan Bertosi<br>
+        Mario Vidmar
+      </div>
 
-<div class="hero">
-<h1>Čaglin</h1>
-<p>Priroda Slavonije 🌿</p>
-</div>
+      <div class="creator">
+        Stranicu izradio Jakov Adamek
+      </div>
+    </div>
+  </div>
 
-<nav>
-<a href="#info">O Čaglinu</a>
-<a href="#slike">Slike</a>
-<a href="#mapa">Karta</a>
-</nav>
+  <!-- HERO -->
 
-<div class="container section" id="info">
-<div class="card">
-<h2>O Čaglinu</h2>
-<p>
-Čaglin je malo slavonsko mjesto smješteno u Požeško-slavonskoj županiji koje odiše prirodnom ljepotom, mirnim životom i tradicionalnim načinom življenja. Okružen je gustim šumama, plodnim poljima i vinogradima koji mijenjaju boje kroz godišnja doba. U proljeće sve postaje zeleno i živo, ljeti zlatno i toplo, a u jesen kraj poprima crvenkaste i smeđe tonove. Ljudi u Čaglinu uglavnom se bave poljoprivredom, uzgojem žitarica, vinogradarstvom i stočarstvom, što ovom području daje posebnu povezanost s prirodom. Sovsko jezero, koje se nalazi u blizini, jedno je od najvažnijih prirodnih bisera ovog kraja i privlači posjetitelje svojom netaknutom vodom, tišinom i bogatim životinjskim svijetom. Čaglin je mjesto gdje nema gradske buke, nego dominira mir, priroda i osjećaj slobode. Šume skrivaju razne životinje, a šetnje kroz prirodu pružaju potpuni odmor za tijelo i um. Iako je mali, Čaglin ima veliku prirodnu vrijednost i predstavlja pravi primjer slavonskog ruralnog života.
-</p>
-</div>
-</div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Čaglin</h1>
+      <p>Srce prirode i Slavonije</p>
+    </div>
+  </section>
 
-<div class="container section" id="slike">
-<div class="card">
-<h2>Priroda Čaglina</h2>
-<div class="gallery">
-<img src="https://source.unsplash.com/800x600/?forest,croatia">
-<img src="https://source.unsplash.com/800x600/?wheat,field,slavonia">
-<img src="https://source.unsplash.com/800x600/?vineyard,croatia">
-<img src="https://source.unsplash.com/800x600/?farmers,field,nature">
-</div>
-</div>
-</div>
+  <!-- INFO -->
 
-<div class="container section" id="mapa">
-<div class="card">
-<h2>Mapa</h2>
-<p><b>OVDJE SE NALAZIMO 📍 Kutjevo</b></p>
-<div id="map"></div>
-</div>
-</div>
+  <section>
+    <h2 class="section-title">O Čaglinu</h2>
 
-<div class="cat">
-<img src="https://upload.wikimedia.org/wikipedia/en/3/3a/Cat03.jpg">
-</div>
+    <div class="cards">
+      <div class="card">
+        <h3>Priroda</h3>
+        <p>
+          Čaglin je okružen šumama, poljima i prekrasnom slavonskom prirodom.
+        </p>
+      </div>
 
-<footer>Čaglin • Ultimate Edition</footer>
+      <div class="card">
+        <h3>Povijest</h3>
+        <p>
+          Mjesto ima bogatu povijest i važan položaj u Požeško-slavonskoj županiji.
+        </p>
+      </div>
 
-<script>
-const sections=document.querySelectorAll('.section');
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')});},{threshold:0.2});
-sections.forEach(s=>obs.observe(s));
+      <div class="card">
+        <h3>Život</h3>
+        <p>
+          Mirno mjesto s prijateljskim ljudima i tradicionalnim slavonskim načinom života.
+        </p>
+      </div>
+    </div>
+  </section>
 
-// MAP FIXED
-var map=L.map('map').setView([45.389,17.77],10);
+  <!-- GALLERY -->
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:''}).addTo(map);
+  <section>
+    <h2 class="section-title">Galerija</h2>
 
-var kutjevo=[45.428,17.773];
-var caglin=[45.350,17.981];
-
-L.marker(kutjevo).addTo(map).bindPopup("Kutjevo - OVDJE SE NALAZIMO 📍").openPopup();
-L.marker(caglin).addTo(map).bindPopup("Čaglin");
-
-L.polyline([kutjevo,caglin],{color:'red',weight:4}).addTo(map);
-
-// CAT pop animation
-window.onload=()=>{
- document.querySelector('.cat').style.transform='scale(1)';
-}
-</script>
-
-</body>
-</html>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format

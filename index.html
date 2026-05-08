@@ -1,108 +1,118 @@
-<!-- ZAMIJENI OVO U CSS-u -->
+<!-- UBACI OVO U <head> -->
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+
+/* PLAVA TEMA */
 
 body{
-background:#030712;
+background:#020817;
 font-family:'Poppins',sans-serif;
 color:white;
 overflow-x:hidden;
 }
 
-/* PLAVA TEMA */
-
-.intro-title{
-color:#4da6ff;
-text-shadow:0 0 25px rgba(77,166,255,0.8);
-}
-
-.creator{
-color:#4da6ff;
-}
+/* HERO */
 
 .hero{
 height:100vh;
 background:
-linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.8)),
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.82)),
 url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1600&auto=format&fit=crop')
 center/cover no-repeat;
 display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-position:relative;
-overflow:hidden;
 }
 
-/* VRATI NORMALAN NASLOV */
+/* NORMALAN NASLOV */
 
 .hero h1{
 font-size:7rem;
-font-family:'Cinzel',serif;
-letter-spacing:6px;
 color:white;
-text-shadow:0 0 30px rgba(255,255,255,0.3);
+font-family:'Cinzel',serif;
+letter-spacing:5px;
+text-shadow:0 0 30px rgba(255,255,255,0.25);
 }
 
-/* PLAVE KARTICE */
+/* PLAVA SLOVA */
 
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 25px rgba(77,166,255,0.4);
-}
-
-.card h3{
-margin-bottom:15px;
-color:#4da6ff;
-}
-
+.intro-title,
+.creator,
+.card h3,
 .section-title{
-color:#ffffff;
-}
-
-/* PLAVA MAPA */
-
-.route{
-position:absolute;
-top:52%;
-left:20%;
-width:55%;
-height:5px;
-background:#4da6ff;
-transform:rotate(-6deg);
-box-shadow:0 0 25px #4da6ff;
-border-radius:20px;
-}
-
-.pulse{
-position:absolute;
-width:25px;
-height:25px;
-background:#4da6ff;
-border-radius:50%;
-box-shadow:0 0 25px #4da6ff;
+color:#4da6ff;
 }
 
 /* GALERIJA */
 
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
 .gallery img{
 width:100%;
-height:260px;
+height:240px;
 object-fit:cover;
-border-radius:20px;
+border-radius:18px;
 transition:0.4s;
 }
 
-/* SAMO ŠUME I POLJA */
+.gallery img:hover{
+transform:scale(1.04);
+}
 
-<div class="gallery">
+/* KARTICE */
 
-<img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200&auto=format&fit=crop">
+.card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(12px);
+transition:0.4s;
+}
 
-<img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200&auto=format&fit=crop">
+.card:hover{
+box-shadow:0 0 25px rgba(77,166,255,0.4);
+transform:translateY(-8px);
+}
 
-<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop">
+/* MAPA */
 
-<img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=1200&auto=format&fit=crop">
+#map{
+height:600px;
+width:100%;
+border-radius:25px;
+overflow:hidden;
+margin-top:40px;
+border:2px solid rgba(255,255,255,0.08);
+box-shadow:0 0 30px rgba(77,166,255,0.25);
+}
 
-<img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1200&auto=format&fit=crop">
+/* FOOTER */
 
-</div>
+footer{
+padding:40px;
+text-align:center;
+background:black;
+margin-top:50px;
+}
+
+/* MAČKA */
+
+.cat{
+position:fixed;
+right:15px;
+bottom:15px;
+width:130px;
+z-index:99999;
+}
+
+</style>

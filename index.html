@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="hr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Čaglin Ultimate</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
+<!-- ZAMIJENI OVO U CSS-u -->
 
 body{
 background:#030712;
@@ -24,74 +7,22 @@ color:white;
 overflow-x:hidden;
 }
 
-/* INTRO */
-
-#intro{
-position:fixed;
-width:100%;
-height:100vh;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:99999;
-animation:hideIntro 2s forwards;
-animation-delay:5s;
-}
-
-@keyframes hideIntro{
-to{
-opacity:0;
-visibility:hidden;
-}
-}
-
-.intro-box{
-text-align:center;
-animation:introAnim 2s ease forwards;
-}
-
-@keyframes introAnim{
-from{
-opacity:0;
-transform:translateY(50px);
-filter:blur(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-filter:blur(0);
-}
-}
+/* PLAVA TEMA */
 
 .intro-title{
-font-size:2.7rem;
-margin-bottom:25px;
-font-family:'Cinzel',serif;
-letter-spacing:3px;
-color:#ff4d4d;
-text-shadow:0 0 25px rgba(255,0,0,0.7);
-}
-
-.intro-names{
-line-height:2;
-font-size:1.2rem;
-color:#d0d0d0;
+color:#4da6ff;
+text-shadow:0 0 25px rgba(77,166,255,0.8);
 }
 
 .creator{
-margin-top:30px;
-font-size:1.3rem;
-color:#ff4d4d;
+color:#4da6ff;
 }
-
-/* HERO */
 
 .hero{
 height:100vh;
 background:
-linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.85)),
-url('https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1600&auto=format&fit=crop')
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.8)),
+url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1600&auto=format&fit=crop')
 center/cover no-repeat;
 display:flex;
 justify-content:center;
@@ -101,111 +32,56 @@ position:relative;
 overflow:hidden;
 }
 
-.hero::before{
-content:'';
-position:absolute;
-width:200%;
-height:200%;
-background:radial-gradient(circle,rgba(255,0,0,0.08),transparent);
-animation:rotate 25s linear infinite;
-}
-
-@keyframes rotate{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
-}
-
-.hero-content{
-position:relative;
-z-index:2;
-animation:fadeUp 2s ease;
-}
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
+/* VRATI NORMALAN NASLOV */
 
 .hero h1{
 font-size:7rem;
 font-family:'Cinzel',serif;
-letter-spacing:8px;
-text-shadow:0 0 35px rgba(255,255,255,0.4);
+letter-spacing:6px;
+color:white;
+text-shadow:0 0 30px rgba(255,255,255,0.3);
 }
 
-.hero p{
-margin-top:20px;
-font-size:1.3rem;
-color:#dcdcdc;
-}
-
-/* SECTION */
-
-section{
-padding:100px 10%;
-}
-
-.section-title{
-font-size:2.7rem;
-margin-bottom:50px;
-text-align:center;
-font-family:'Cinzel',serif;
-letter-spacing:4px;
-}
-
-/* ABOUT */
-
-.about-box{
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.08);
-padding:40px;
-border-radius:25px;
-backdrop-filter:blur(15px);
-line-height:2;
-font-size:1.05rem;
-box-shadow:0 0 25px rgba(0,0,0,0.5);
-}
-
-/* CARDS */
-
-.cards{
-margin-top:50px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.card{
-background:rgba(255,255,255,0.05);
-padding:30px;
-border-radius:20px;
-border:1px solid rgba(255,255,255,0.08);
-transition:0.4s;
-}
+/* PLAVE KARTICE */
 
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0 0 25px rgba(255,0,0,0.4);
+box-shadow:0 0 25px rgba(77,166,255,0.4);
 }
 
 .card h3{
 margin-bottom:15px;
-color:#ff4d4d;
+color:#4da6ff;
 }
 
-/* GALLERY */
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+.section-title{
+color:#ffffff;
 }
+
+/* PLAVA MAPA */
+
+.route{
+position:absolute;
+top:52%;
+left:20%;
+width:55%;
+height:5px;
+background:#4da6ff;
+transform:rotate(-6deg);
+box-shadow:0 0 25px #4da6ff;
+border-radius:20px;
+}
+
+.pulse{
+position:absolute;
+width:25px;
+height:25px;
+background:#4da6ff;
+border-radius:50%;
+box-shadow:0 0 25px #4da6ff;
+}
+
+/* GALERIJA */
 
 .gallery img{
 width:100%;
@@ -215,237 +91,7 @@ border-radius:20px;
 transition:0.4s;
 }
 
-.gallery img:hover{
-transform:scale(1.05);
-filter:brightness(1.1);
-}
-
-/* MAP */
-
-.map-box{
-position:relative;
-height:600px;
-border-radius:25px;
-overflow:hidden;
-border:2px solid rgba(255,255,255,0.08);
-box-shadow:0 0 35px rgba(255,0,0,0.2);
-}
-
-.map-box iframe{
-width:100%;
-height:100%;
-border:none;
-filter:brightness(0.75);
-}
-
-/* RED ROUTE */
-
-.route{
-position:absolute;
-top:52%;
-left:20%;
-width:55%;
-height:5px;
-background:red;
-transform:rotate(-6deg);
-box-shadow:0 0 25px red;
-border-radius:20px;
-}
-
-/* PULSE */
-
-.pulse{
-position:absolute;
-width:25px;
-height:25px;
-background:red;
-border-radius:50%;
-box-shadow:0 0 25px red;
-}
-
-.pulse.left{
-left:20%;
-top:54%;
-}
-
-.pulse.right{
-right:20%;
-top:46%;
-}
-
-.pulse::before{
-content:'';
-position:absolute;
-width:100%;
-height:100%;
-border-radius:50%;
-background:rgba(255,0,0,0.5);
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%{
-transform:scale(1);
-opacity:1;
-}
-100%{
-transform:scale(5);
-opacity:0;
-}
-}
-
-/* FOOTER */
-
-footer{
-padding:40px;
-text-align:center;
-background:black;
-border-top:1px solid rgba(255,255,255,0.08);
-line-height:2;
-}
-
-/* CAT */
-
-.cat{
-position:fixed;
-right:20px;
-bottom:20px;
-width:130px;
-z-index:9999;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:4rem;
-}
-
-.section-title{
-font-size:2rem;
-}
-
-.intro-title{
-font-size:2rem;
-}
-
-}
-
-</style>
-</head>
-<body>
-
-<!-- INTRO -->
-
-<div id="intro">
-
-<div class="intro-box">
-
-<div class="intro-title">
-U PROJEKTU SUDJELOVALI
-</div>
-
-<div class="intro-names">
-Jakov Adamek<br>
-Jakov Budić<br>
-Stjepan Bertosi<br>
-Mario Vidmar
-</div>
-
-<div class="creator">
-STRANICU IZRADIO JAKOV ADAMEK
-</div>
-
-</div>
-
-</div>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-content">
-
-<h1>ČAGLIN</h1>
-
-<p>
-PRIRODA • TRADICIJA • ZAJEDNIŠTVO
-</p>
-
-</div>
-
-</section>
-
-<!-- ABOUT -->
-
-<section>
-
-<h2 class="section-title">
-O ČAGLINU
-</h2>
-
-<div class="about-box">
-
-Čaglin je malo, ali ponosno mjesto smješteno u zapadnom dijelu Požeško-slavonske županije.
-Okružen je prekrasnim slavonskim šumama, brežuljcima, poljima i prirodom koja tijekom cijele godine daje poseban mir i ljepotu ovom kraju.
-
-Mjesto je poznato po dugoj povijesti, tradicionalnom načinu života i ljudima koji njeguju zajedništvo, poštovanje i ljubav prema svom kraju.
-Prvi spomen Čaglina datira još iz davne 1326. godine, a tijekom stoljeća mjesto je prolazilo kroz razne promjene i razvijalo se zajedno s cijelom Slavonijom.
-
-Danas je Čaglin poznat po mirnoj atmosferi, čistom zraku i prirodi koja okružuje cijelo područje.
-Brojna polja pšenice, kukuruza i vinogradi stvaraju prekrasne krajolike koji posebno dolaze do izražaja tijekom zalaska sunca.
-
-Mnogi stanovnici bave se poljoprivredom, stočarstvom i uzgojem raznih kultura, što je oduvijek bio važan dio života u ovom kraju.
-Osim prirode i tradicije, Čaglin je poznat po prijateljskim ljudima i osjećaju zajedništva koji se može osjetiti u svakodnevnom životu.
-
-Čaglin nije samo mjesto na karti.
-To je mjesto mira, prirode, uspomena i budućnosti.
-
-</div>
-
-<div class="cards">
-
-<div class="card">
-<h3>Povijest</h3>
-<p>
-Čaglin ima bogatu povijest koja seže stoljećima unatrag.
-Kroz godine mjesto je zadržalo svoju tradiciju i identitet.
-</p>
-</div>
-
-<div class="card">
-<h3>Priroda</h3>
-<p>
-Okružen šumama i poljima, Čaglin pruža prekrasan pogled tijekom svih godišnjih doba.
-</p>
-</div>
-
-<div class="card">
-<h3>Zajedništvo</h3>
-<p>
-Stanovnici Čaglina poznati su po gostoljubivosti, slozi i ljubavi prema svom kraju.
-</p>
-</div>
-
-<div class="card">
-<h3>Budućnost</h3>
-<p>
-Mjesto se nastavlja razvijati i čuvati svoju tradiciju za buduće generacije.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- GALLERY -->
-
-<section>
-
-<h2 class="section-title">
-GALERIJA SLAVONSKE PRIRODE
-</h2>
+/* SAMO ŠUME I POLJA */
 
 <div class="gallery">
 
@@ -457,50 +103,6 @@ GALERIJA SLAVONSKE PRIRODE
 
 <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=1200&auto=format&fit=crop">
 
-</div>
-
-</section>
-
-<!-- MAP -->
-
-<section>
-
-<h2 class="section-title">
-RUTA KUTJEVO → ČAGLIN
-</h2>
-
-<div class="map-box">
-
-<iframe
-src="https://www.google.com/maps?q=Kutjevo+Croatia&output=embed">
-</iframe>
-
-<div class="route"></div>
-
-<div class="pulse left"></div>
-
-<div class="pulse right"></div>
+<img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1200&auto=format&fit=crop">
 
 </div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-ČAGLIN — SRCE POŽEŠTINE<br>
-
-© 2026. Sva prava pridržana.<br>
-
-Stranicu izradio Jakov Adamek
-
-</footer>
-
-<!-- CAT -->
-
-<img class="cat"
-src="https://media.tenor.com/mGifcxQh7S8AAAAi/cat-cat-meme.gif">
-
-</body>
-</html>

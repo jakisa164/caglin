@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="hr">
 <head>
@@ -26,8 +27,6 @@ font-family:'Poppins',sans-serif;
 color:white;
 overflow-x:hidden;
 }
-
-/* INTRO */
 
 #intro{
 position:fixed;
@@ -87,8 +86,6 @@ font-size:1.2rem;
 color:#4da6ff;
 }
 
-/* HERO */
-
 .hero{
 height:100vh;
 background:
@@ -130,8 +127,6 @@ font-size:1.3rem;
 color:#dcdcdc;
 }
 
-/* SECTION */
-
 section{
 padding:100px 10%;
 }
@@ -144,8 +139,6 @@ color:#4da6ff;
 font-family:'Cinzel',serif;
 }
 
-/* ABOUT */
-
 .about{
 background:rgba(255,255,255,0.04);
 padding:40px;
@@ -154,8 +147,6 @@ border:1px solid rgba(255,255,255,0.08);
 line-height:2;
 font-size:1.05rem;
 }
-
-/* CARDS */
 
 .cards{
 margin-top:40px;
@@ -182,8 +173,6 @@ margin-bottom:15px;
 color:#4da6ff;
 }
 
-/* GALERIJA */
-
 .gallery{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -202,7 +191,24 @@ transition:0.4s;
 transform:scale(1.04);
 }
 
-/* MAPA */
+.poster-box{
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:30px;
+}
+
+.poster-box img{
+width:100%;
+max-width:1300px;
+border-radius:30px;
+box-shadow:0 0 50px rgba(77,166,255,0.4);
+transition:0.5s;
+}
+
+.poster-box img:hover{
+transform:scale(1.02);
+}
 
 #map{
 height:600px;
@@ -212,8 +218,6 @@ border:2px solid rgba(255,255,255,0.08);
 box-shadow:0 0 30px rgba(77,166,255,0.25);
 }
 
-/* FOOTER */
-
 footer{
 padding:40px;
 text-align:center;
@@ -222,8 +226,6 @@ margin-top:50px;
 line-height:2;
 }
 
-/* MAČKA */
-
 .cat{
 position:fixed;
 right:15px;
@@ -231,8 +233,6 @@ bottom:15px;
 width:130px;
 z-index:99999;
 }
-
-/* RESPONSIVE */
 
 @media(max-width:768px){
 
@@ -253,8 +253,6 @@ font-size:2rem;
 </style>
 </head>
 <body>
-
-<!-- INTRO -->
 
 <div id="intro">
 
@@ -279,8 +277,6 @@ STRANICU IZRADIO JAKOV ADAMEK
 
 </div>
 
-<!-- HERO -->
-
 <section class="hero">
 
 <div class="hero-content">
@@ -295,8 +291,6 @@ SRCE PRIRODE, TRADICIJE I ZAJEDNIŠTVA
 
 </section>
 
-<!-- ABOUT -->
-
 <section>
 
 <h2 class="section-title">
@@ -310,9 +304,6 @@ Okružuju ga prekrasne šume, polja i slavonski brežuljci koji ovom kraju daju 
 
 Mjesto je poznato po svojoj dugoj povijesti, mirnom životu i prirodi koja privlači mnoge ljude.
 Stanovnici Čaglina poznati su po zajedništvu, gostoljubivosti i ljubavi prema svom kraju.
-
-Kroz godine Čaglin je zadržao svoju tradiciju i prirodne ljepote.
-Poljoprivreda, šumarstvo i život u skladu s prirodom važan su dio svakodnevnog života ovog kraja.
 
 </div>
 
@@ -350,8 +341,6 @@ Mjesto se razvija i čuva svoju tradiciju za buduće generacije.
 
 </section>
 
-<!-- GALERIJA -->
-
 <section>
 
 <h2 class="section-title">
@@ -372,7 +361,19 @@ GALERIJA SLAVONSKE PRIRODE
 
 </section>
 
-<!-- MAPA -->
+<section>
+
+<h2 class="section-title">
+TURISTIČKE AVANTURE
+</h2>
+
+<div class="poster-box">
+
+<img src="image.png" alt="Turistički plakat">
+
+</div>
+
+</section>
 
 <section>
 
@@ -384,8 +385,6 @@ RUTA OD KUTJEVA DO ČAGLINA
 
 </section>
 
-<!-- FOOTER -->
-
 <footer>
 
 ČAGLIN — SRCE POŽEŠTINE<br>
@@ -396,27 +395,19 @@ Stranicu izradio Jakov Adamek
 
 </footer>
 
-<!-- MAČKA -->
-
 <img class="cat"
 src="https://media.tenor.com/mGifcxQh7S8AAAAi/cat-cat-meme.gif">
 
 <script>
 
-/* KOORDINATE */
-
 const kutjevo = [45.4269, 17.8839];
 const caglin = [45.3569, 17.9890];
-
-/* MAPA */
 
 const map = L.map('map').setView([45.39,17.94], 11);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 maxZoom: 19
 }).addTo(map);
-
-/* MARKERI */
 
 L.circleMarker(kutjevo,{
 radius:10,
@@ -433,8 +424,6 @@ fillColor:'#4da6ff',
 fillOpacity:1
 }).addTo(map)
 .bindPopup("Čaglin");
-
-/* RUTA */
 
 const route = L.polyline([
 kutjevo,
@@ -455,3 +444,4 @@ map.fitBounds(route.getBounds());
 
 </body>
 </html>
+```
